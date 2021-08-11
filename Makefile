@@ -6,7 +6,7 @@
 #    By: snarain <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/10 19:06:53 by snarain           #+#    #+#              #
-#    Updated: 2021/08/10 22:19:37 by snarain          ###   ########.fr        #
+#    Updated: 2021/08/11 02:41:52 by snarain          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,20 +14,17 @@ NAME = so_long
 
 CC = gcc
 
-FLAGS	= -Wall -Wextra -Werror
+FLAGS	= -Wall -Wextra -Werror -Imlx
 
 DEL = /bin/rm -f
 
-SRCS = \
+SRCS = main.c \
 
 SRCS_O	= ${SRCS:.c=.o}
 
-INCLUDES = so_long.h \
-		   \
+MLX = minilibx
 
 all: $(NAME)
-
-LIBC	= ar -rcs
 
 bonus: ${NAME}
 
@@ -35,7 +32,8 @@ bonus: ${NAME}
 		${CC} ${FLAGS} -c $< -o ${<:.c=.o}
 
 $(NAME): ${SRCS_O} ${INCLUDES}
-		${LIBC} $(NAME) $(SRCS_O)
+		make -C ${MLX}
+		${CC} ${FLAGS} -o $(NAME) $(SRCS_O)
 
 fclean: clean
 		$(DEL) $(NAME)
