@@ -6,39 +6,39 @@
 #    By: snarain <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/10 19:06:53 by snarain           #+#    #+#              #
-#    Updated: 2021/08/11 02:41:52 by snarain          ###   ########.fr        #
+#    Updated: 2021/08/11 17:48:51 by snarain          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = so_long
-
-CC = gcc
-
-FLAGS	= -Wall -Wextra -Werror -Imlx
-
-DEL = /bin/rm -f
-
 SRCS = main.c \
 
-SRCS_O	= ${SRCS:.c=.o}
+OBJS         = ${SRCS:.c=.o}
 
-MLX = minilibx
+UNAME        := $(shell uname)
 
-all: $(NAME)
+PATH_MLX    = mlx
+CC             = gcc -g -fsanitize=address
+CFLAGS        = -Wall -Wextra -Werror
+RM            = rm -f
+NAME        = so_long
+FLAGS        = -Lmlx -lmlx -framework OpenGL -framework AppKit
 
-bonus: ${NAME}
+all:         ${NAME}
 
-%.o: %.c
-		${CC} ${FLAGS} -c $< -o ${<:.c=.o}
+.c.o:
+	${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
 
-$(NAME): ${SRCS_O} ${INCLUDES}
-		make -C ${MLX}
-		${CC} ${FLAGS} -o $(NAME) $(SRCS_O)
-
-fclean: clean
-		$(DEL) $(NAME)
-
+$(NAME):     $(OBJS)
+	make -C $(PATH_MLX)
+	${CC} $(CFLAGS) -o $(NAME) $(OBJS) $(FLAGS)
 clean:
-		$(DEL) $(SRCS_O)
+	make -C $(PATH_MLX) clean
+	${RM} ${OBJS}
 
-re: fclean all
+fclean:     clean
+	make -C $(PATH_MLX) clean
+	${RM} ${NAME}
+
+re:         fclean all
+
+.PHONY:        bonus all clean fclean re

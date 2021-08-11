@@ -6,7 +6,7 @@
 /*   By: snarain <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/10 19:19:06 by snarain           #+#    #+#             */
-/*   Updated: 2021/08/10 22:19:30 by snarain          ###   ########.fr       */
+/*   Updated: 2021/08/11 18:17:12 by snarain          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,7 @@ int main(void)
 		free(win_ptr);
 		return (MLX_ERROR);
 	}
-	while (1)
-		;
-	mlx_destroy_window(mlx_ptr, win_ptr);
-	mlx_destroy_display(mlx_ptr);
+	mlx_loop(mlx_ptr);
 	free(mlx_ptr);
+	return (0);
 }
