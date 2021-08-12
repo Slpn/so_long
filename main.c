@@ -6,7 +6,7 @@
 /*   By: snarain <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/10 19:19:06 by snarain           #+#    #+#             */
-/*   Updated: 2021/08/12 18:55:44 by snarain          ###   ########.fr       */
+/*   Updated: 2021/08/12 22:28:53 by snarain          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	colors(t_mlx *data)
 {
 	if (data->win != NULL)
 		mlx_pixel_put(data->mlx, data->win, 
-				WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2, RED_PIXEL);
+				WINDOW_WIDTH / 10, WINDOW_HEIGHT / 10, RED_PIXEL);
 	return (0);
 }
 
