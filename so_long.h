@@ -6,7 +6,7 @@
 /*   By: snarain <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/10 21:53:42 by snarain           #+#    #+#             */
-/*   Updated: 2021/08/12 18:47:32 by snarain          ###   ########.fr       */
+/*   Updated: 2021/08/17 17:51:05 by snarain          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,10 @@
 # include <X11/keysym.h>
 
 # define RED_PIXEL 0xFF0000
+# define GREEN_PIXEL 0xFF00
 
-# define WINDOW_WIDTH	600
-# define WINDOW_HEIGHT	300
+# define WINDOW_WIDTH	700
+# define WINDOW_HEIGHT	450
 
 typedef struct s_mlx
 {
@@ -39,5 +40,14 @@ typedef struct	s_pixel
 	int		line_length;
 	int		endian;
 }				t_pixel;
+
+typedef struct s_rect
+{
+	int	x;
+	int	y;
+	int	width;
+	int	height;
+	int color;
+}		t_rect;
 
 #endif
