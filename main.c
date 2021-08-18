@@ -6,7 +6,7 @@
 /*   By: snarain <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/10 19:19:06 by snarain           #+#    #+#             */
-/*   Updated: 2021/08/17 16:36:36 by snarain          ###   ########.fr       */
+/*   Updated: 2021/08/18 19:04:34 by snarain          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,10 @@ int	render_rect(t_mlx *data, t_rect rect)
 
 int	render(t_mlx *data)
 {
-	render_rect(data, (t_rect){WINDOW_WIDTH - 100, WINDOW_HEIGHT - 100, 100, 100, RED_PIXEL});
-	render_rect(data, (t_rect){0, 0, 100, 100, GREEN_PIXEL});
+	render_rect(data, (t_rect){WINDOW_WIDTH - 100, WINDOW_HEIGHT - 100, 
+			100, 100, RED_PIXEL});
+	render_rect(data, (t_rect){0, 10
+			, 100, 100, GREEN_PIXEL});
 	return (0);
 }
 
@@ -60,7 +62,10 @@ int	handle_keypress(int keysym, t_mlx *data)
 int main(void)
 {
 	t_mlx	data;
-
+	int render;
+	int data;
+	int hei;
+	int wid;
 	data.mlx = mlx_init();
 	if (data.mlx == NULL)
 		return (MLX_ERROR);
@@ -68,9 +73,11 @@ int main(void)
 			"My first window!");
 	if (data.win == NULL)
 	{
-		free(data.win);
+		free(data.mlx);
 		return (MLX_ERROR);
 	}
+	data.img = mlx_xpm_file_to_image(data.mlx, "/xpm/Luffy-removebg-preview.xpm", &hei, &wid);
+	mlx_put_image_to_window(data.mlx, data.win, data.img, 10, 10);
 	mlx_loop_hook(data.mlx, &render, &data);
 	mlx_hook(data.win, KeyPress, KeyPressMask, &handle_keypress, &data);
 	mlx_loop(data.mlx);

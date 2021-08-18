@@ -6,7 +6,7 @@
 /*   By: snarain <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/10 21:53:42 by snarain           #+#    #+#             */
-/*   Updated: 2021/08/17 17:51:05 by snarain          ###   ########.fr       */
+/*   Updated: 2021/08/18 18:53:49 by snarain          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,17 +26,24 @@
 # define WINDOW_WIDTH	700
 # define WINDOW_HEIGHT	450
 
+# define W 119
+# define D 100
+# define S 115
+# define A 97
+# define ESC 65307
+
 typedef struct s_mlx
 {
 	void	*mlx;
 	void	*win;
+	void	*img;
 }	t_mlx;
 
 typedef struct	s_pixel
 {
 	void	*img;
 	char	*addr;
-	int		bits_per_pixel;
+	int		bpp;
 	int		line_length;
 	int		endian;
 }				t_pixel;
