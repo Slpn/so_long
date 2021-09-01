@@ -6,7 +6,7 @@
 /*   By: snarain <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/10 21:53:42 by snarain           #+#    #+#             */
-/*   Updated: 2021/08/18 18:53:49 by snarain          ###   ########.fr       */
+/*   Updated: 2021/09/01 20:31:34 by snarain          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,9 @@
 # include <X11/X.h>
 # include <X11/keysym.h>
 
-# define RED_PIXEL 0xFF0000
-# define GREEN_PIXEL 0xFF00
+# define MLX_ERROR		1
+# define RED_PIXEL		0xFF0000
+# define GREEN_PIXEL	0xFF00
 
 # define WINDOW_WIDTH	700
 # define WINDOW_HEIGHT	450
@@ -32,13 +33,6 @@
 # define A 97
 # define ESC 65307
 
-typedef struct s_mlx
-{
-	void	*mlx;
-	void	*win;
-	void	*img;
-}	t_mlx;
-
 typedef struct	s_pixel
 {
 	void	*img;
@@ -47,6 +41,15 @@ typedef struct	s_pixel
 	int		line_length;
 	int		endian;
 }				t_pixel;
+
+typedef struct s_mlx
+{
+	void	*mlx;
+	void	*win;
+	void	*img;
+	int		i;
+	t_pixel img_mlx;
+}	t_mlx;
 
 typedef struct s_rect
 {

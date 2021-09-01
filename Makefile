@@ -6,7 +6,7 @@
 #    By: snarain <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/10 19:06:53 by snarain           #+#    #+#              #
-#    Updated: 2021/08/12 22:26:44 by snarain          ###   ########.fr        #
+#    Updated: 2021/09/01 19:26:45 by snarain          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,20 +17,17 @@ OBJS         = ${SRCS:.c=.o}
 UNAME        := $(shell uname)
 
 PATH_MLX    = mlx
-CC             = gccs
-CFLAGS        = -Wall -Wextra -Werror
+CC             = gcc
 RM            = rm -f
 NAME        = so_long
-FLAGS        = -lmlx -lX11 -lXext OpenGL AppKit
 
 all:         ${NAME}
 
 .c.o:
-	${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
+	$(CC) -Wall -Wextra -Werror -I/usr/include -Imlx_linux -O3 -c $< -o $@
 
 $(NAME):	$(OBJS)
-	make -C $(PATH_MLX)
-	${CC} $(CFLAGS) -o $(NAME) $(OBJS) $(FLAGS)
+	$(CC) -Lmlx_linux -lmlx_linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME)
 
 clean:
 	make -C $(PATH_MLX) clean
