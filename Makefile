@@ -6,28 +6,35 @@
 #    By: snarain <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/10 19:06:53 by snarain           #+#    #+#              #
-#    Updated: 2021/09/01 19:26:45 by snarain          ###   ########.fr        #
+#    Updated: 2021/09/02 18:22:40 by snarain          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS =    main.c \
+NAME        = so_long
+
+SRCS =	 main.c \
+		./src/GNL/get_next_line.c \
+		 ./src/GNL/get_next_line_utils.c \
 
 OBJS         = ${SRCS:.c=.o}
 
 UNAME        := $(shell uname)
 
-PATH_MLX    = mlx
-CC             = gcc
-RM            = rm -f
-NAME        = so_long
+PATH_MLX	= mlx
+
+CC			= gcc
+
+RM			= rm -f
+
+FLAGS		=  -Lmlx_linux -lmlx_linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o
 
 all:         ${NAME}
 
 .c.o:
-	$(CC) -Wall -Wextra -Werror -I/usr/include -Imlx_linux -O3 -c $< -o $@
+	$(CC) -Wall -Wextra -Werror -c $< -o
 
 $(NAME):	$(OBJS)
-	$(CC) -Lmlx_linux -lmlx_linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME)
+	$(CC) $(FLAGS) $(NAME) $(OBJS)
 
 clean:
 	make -C $(PATH_MLX) clean
