@@ -6,12 +6,12 @@
 /*   By: snarain <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/10 19:19:06 by snarain           #+#    #+#             */
-/*   Updated: 2021/09/02 19:44:10 by snarain          ###   ########.fr       */
+/*   Updated: 2021/09/03 15:36:27 by snarain          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
+/*
 int	render_rect(t_mlx *data, t_rect rect)
 {
 	int	i;
@@ -65,7 +65,7 @@ int	key_hook(int keysym, t_mlx *data)
 {
 	int	y = 10;
 	int	x = 10;
-	char *path_xpm = "./xpm/Luffy-removebg-preview.xpm";
+	char *path_xpm = "./xpm/Luffy.xpm";
 	int hei;
 	int wid;
 	if (keysym == 119)
@@ -78,16 +78,27 @@ int	key_hook(int keysym, t_mlx *data)
 		mlx_put_image_to_window(data->mlx, data->win, data->img, 80, 200);
 	}
 	return (0);
+}*/
+
+int main(int ac, char **av)
+{
+	if (ac == 2)
+	{
+		check_file(av[1]);
+	}
+	else
+		printf("WRONG ARGUMENNTS NUMBERS !\n");
+	return (0);
 }
 
-int main(void)
+/*int main(void)
 {
 	t_mlx	data;
 	int hei;
 	int wid;
 	int	fd;
 	char *line;
-	char *path_xpm = "./xpm/Luffy-removebg-preview.xpm";
+	char *path_xpm = "./xpm/Luffy.xpm";
 	
 	data.index = 0;
 	data.i = 0;
@@ -114,4 +125,4 @@ int main(void)
 	mlx_loop(data.mlx);
 	free(data.mlx);
 	return (0);
-}
+}*/

@@ -6,7 +6,7 @@
 /*   By: snarain <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/10 21:53:42 by snarain           #+#    #+#             */
-/*   Updated: 2021/09/02 19:43:32 by snarain          ###   ########.fr       */
+/*   Updated: 2021/09/03 20:02:04 by snarain          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@
 # include <stdio.h>
 # include <X11/X.h>
 # include <X11/keysym.h>
+# include "./src/libft/libft.h"
+# include "./src/GNL/get_next_line.h"
 
 # define MLX_ERROR		1
 # define RED_PIXEL		0xFF0000
@@ -27,12 +29,29 @@
 
 # define WINDOW_WIDTH	700
 # define WINDOW_HEIGHT	450
-
+/*
+ * TOUCH
+ */
 # define W 119
 # define D 100
 # define S 115
 # define A 97
 # define ESC 65307
+/*
+ *	LUFFY
+ */
+
+# define LUFFY_STRAIGHT	"./xpm/Luffy.xpm"
+
+/*
+ *	COLLECTIBLES
+ */
+# define DEMON_FRUIT "./xpm/demon_fruit.xpm"
+
+typedef struct	m_map
+{
+	char **tab;
+}	t_map;
 
 typedef struct	s_pixel
 {
@@ -51,6 +70,7 @@ typedef struct s_mlx
 	int		index;
 	int		i;
 	t_pixel img_mlx;
+	t_map	map;
 }	t_mlx;
 
 typedef struct s_rect
@@ -64,4 +84,8 @@ typedef struct s_rect
 
 int		get_next_line(int fd, char **line);
 int		parse_map(char **line);
+int		check_file(char *av);
+int		check_name(char *av);
+char	*ft_strjoin(char *s1, char *s2);
+char	*ft_strdup(char *s);
 #endif
