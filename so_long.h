@@ -6,7 +6,7 @@
 /*   By: snarain <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/10 21:53:42 by snarain           #+#    #+#             */
-/*   Updated: 2021/09/03 20:02:04 by snarain          ###   ########.fr       */
+/*   Updated: 2021/09/04 02:16:21 by snarain          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,9 @@
 
 typedef struct	m_map
 {
-	char **tab;
+	char	**tab;
+	int		width;
+	int		length;
 }	t_map;
 
 typedef struct	s_pixel
@@ -86,6 +88,6 @@ int		get_next_line(int fd, char **line);
 int		parse_map(char **line);
 int		check_file(char *av);
 int		check_name(char *av);
-char	*ft_strjoin(char *s1, char *s2);
-char	*ft_strdup(char *s);
+int		check_square(t_mlx *data, char *line);
+
 #endif
