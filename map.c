@@ -6,11 +6,22 @@
 /*   By: snarain <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/02 18:55:54 by snarain           #+#    #+#             */
-/*   Updated: 2021/09/06 02:46:22 by snarain          ###   ########.fr       */
+/*   Updated: 2021/09/06 21:19:08 by snarain          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+int	check_square(t_mlx *data, char *line)
+{
+	if (data->map.width != ft_strlenG(line))
+	{
+		printf("ERROR : WRONG MAP\n");
+		free(line);
+		exit(0);
+	}
+	return (0);
+}
 
 int	check_rect(t_mlx *data)
 {
@@ -30,16 +41,32 @@ int	check_rect(t_mlx *data)
 		if (data->map.tab[y][len_x] != '1')
 			return (0);
 	x = -1;
-	while (data->map.tab[0][++x])
+	while (data->map.tab[0][++x] && x <= len_x)
 		if (data->map.tab[0][x] != '1')
 			return (0);
 	x = -1;
-	while (data->map.tab[len_y][++x])
-	{
+	while (data->map.tab[len_y][++x] && x <= len_x)
 		if (data->map.tab[len_y][x] != '1')
 			return (0);
-	}
 	return (1);
+}
+
+int	in_map(t_mlx *data)
+{
+	data->map.player = 0;
+	data->map.collect = 0;
+	data->map.exit = 0;
+	while (*data->map.tmp)
+	{
+		if(*data->map.tmp == 'P')
+			data->map.player += 1;
+		if(*data->map.tmp == 'C')
+			data->map.collect += 1;
+		if(*data->map.tmp == 'E')
+			data->map.exit += 1;
+		data->map.tmp++;
+	}
+	return (0);
 }
 
 int	ft_check(char *line)
@@ -54,20 +81,17 @@ int	ft_check(char *line)
 				line[i] == '\n' || line[i] =='\0')
 			i++;
 		else
-		{
 			return (-1);
-		}
 	}
 	return (0);
 }
 
 int	parse_map(t_mlx *data)
 {
-	int res;
-
-	res = check_rect(data);
-	printf("res = %d\n",res);
-	if (ft_check(data->map.tmp) == -1 || check_rect(data) == 0)
+	in_map(data);
+	if (ft_check(data->map.tmp) == -1 || check_rect(data) == 0 ||
+			data->map.player != 1 || data->map.collect == 0 || 
+			data->map.exit == 0)
 	{
 		printf("ERROR : MAP ERROR !\n");
 		exit(EXIT_FAILURE);

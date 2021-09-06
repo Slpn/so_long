@@ -6,7 +6,7 @@
 /*   By: snarain <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/03 15:27:54 by snarain           #+#    #+#             */
-/*   Updated: 2021/09/06 02:42:32 by snarain          ###   ########.fr       */
+/*   Updated: 2021/09/06 21:19:10 by snarain          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,26 +47,24 @@ int	check_open(t_mlx *data, char *av)
 	return (0);
 }
 
-int	check_file(char *av)
+int	check_file(char *av, t_mlx *data)
 {
-	t_mlx	data;
 	char	*line;
 
-	data.map.length = 0;
-	data.map.width = 0;
-	data.map.tmp = ft_strdupG("");
-	check_open(&data, av);
-	while (get_next_line(data.map.fd, &line) == 1)
+	data->map.length = 1;
+	data->map.width = 0;
+	data->map.tmp = ft_strdupG("");
+	check_open(data, av);
+	while (get_next_line(data->map.fd, &line) == 1)
 	{
-		check_square(&data, line);
+		check_square(data, line);
 		line = ft_strjoinG(line, "\n");
-		data.map.tmp = ft_strjoinG(data.map.tmp, line);
+		data->map.tmp = ft_strjoinG(data->map.tmp, line);
+		data->map.length += 1;
 		free(line);
 	}
-	data.map.tab = ft_split(data.map.tmp, '\0');
-	printf("map = %s\n",*data.map.tab);
-	parse_map(&data);
-	free(data.map.tmp);
-	free(line);
+	data->map.tab = ft_split(data->map.tmp, '\n');
+	parse_map(data);
+	close (data->map.fd);
 	return (0);
 }

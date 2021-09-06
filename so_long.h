@@ -6,7 +6,7 @@
 /*   By: snarain <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/10 21:53:42 by snarain           #+#    #+#             */
-/*   Updated: 2021/09/06 01:50:18 by snarain          ###   ########.fr       */
+/*   Updated: 2021/09/06 21:05:46 by snarain          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,9 @@ typedef struct	m_map
 	char	**tab;
 	char	*tmp;
 	int		fd;
+	int		player;
+	int		collect;
+	int		exit;
 	int		width;
 	int		length;
 }	t_map;
@@ -88,7 +91,7 @@ typedef struct s_rect
 
 int		get_next_line(int fd, char **line);
 int		parse_map(t_mlx *data);
-int		check_file(char *av);
+int		check_file(char *av, t_mlx *data);
 int		check_name(char *av);
 int		check_square(t_mlx *data, char *line);
 

@@ -6,7 +6,7 @@
 /*   By: snarain <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/10 19:19:06 by snarain           #+#    #+#             */
-/*   Updated: 2021/09/03 15:36:27 by snarain          ###   ########.fr       */
+/*   Updated: 2021/09/06 21:05:23 by snarain          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,9 +82,10 @@ int	key_hook(int keysym, t_mlx *data)
 
 int main(int ac, char **av)
 {
+	t_mlx data;
 	if (ac == 2)
 	{
-		check_file(av[1]);
+		check_file(av[1], &data);
 	}
 	else
 		printf("WRONG ARGUMENNTS NUMBERS !\n");
