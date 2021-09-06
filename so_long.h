@@ -6,7 +6,7 @@
 /*   By: snarain <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/10 21:53:42 by snarain           #+#    #+#             */
-/*   Updated: 2021/09/04 19:54:45 by snarain          ###   ########.fr       */
+/*   Updated: 2021/09/06 01:50:18 by snarain          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ typedef struct s_rect
 }		t_rect;
 
 int		get_next_line(int fd, char **line);
-int		parse_map(char *line);
+int		parse_map(t_mlx *data);
 int		check_file(char *av);
 int		check_name(char *av);
 int		check_square(t_mlx *data, char *line);

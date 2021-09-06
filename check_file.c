@@ -6,7 +6,7 @@
 /*   By: snarain <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/03 15:27:54 by snarain           #+#    #+#             */
-/*   Updated: 2021/09/04 20:07:14 by snarain          ###   ########.fr       */
+/*   Updated: 2021/09/06 02:42:32 by snarain          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,9 @@ int	check_file(char *av)
 		data.map.tmp = ft_strjoinG(data.map.tmp, line);
 		free(line);
 	}
-	parse_map(data.map.tmp);
 	data.map.tab = ft_split(data.map.tmp, '\0');
+	printf("map = %s\n",*data.map.tab);
+	parse_map(&data);
 	free(data.map.tmp);
 	free(line);
 	return (0);
