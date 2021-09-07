@@ -6,7 +6,7 @@
 /*   By: snarain <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/10 21:53:42 by snarain           #+#    #+#             */
-/*   Updated: 2021/09/06 21:05:46 by snarain          ###   ########.fr       */
+/*   Updated: 2021/09/07 18:51:25 by snarain          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,6 @@
 # define RED_PIXEL		0xFF0000
 # define GREEN_PIXEL	0xFF00
 
-# define WINDOW_WIDTH	700
-# define WINDOW_HEIGHT	450
 /*
  * TOUCH
  */
@@ -37,6 +35,15 @@
 # define S 115
 # define A 97
 # define ESC 65307
+
+/*
+ *	WALL
+ */
+
+# define BLOCK	64
+# define WALL "./xpm/bricks.xpm"
+# define GRASS "./xpm/mossover.xpm"
+
 /*
  *	LUFFY
  */
@@ -74,9 +81,13 @@ typedef struct s_mlx
 	void	*mlx;
 	void	*win;
 	void	*img;
-	int		index;
-	int		i;
-	t_pixel img_mlx;
+	int		win_width;
+	int		win_length;
+	int		width;
+	int		length;
+	t_pixel img_Luffy;
+	t_pixel img_wall;
+	t_pixel img_others;
 	t_map	map;
 }	t_mlx;
 
@@ -94,5 +105,6 @@ int		parse_map(t_mlx *data);
 int		check_file(char *av, t_mlx *data);
 int		check_name(char *av);
 int		check_square(t_mlx *data, char *line);
-
+int		init_mlx(t_mlx *data);
+void	ft_free(t_mlx *data);
 #endif

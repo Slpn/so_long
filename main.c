@@ -6,7 +6,7 @@
 /*   By: snarain <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/10 19:19:06 by snarain           #+#    #+#             */
-/*   Updated: 2021/09/06 21:05:23 by snarain          ###   ########.fr       */
+/*   Updated: 2021/09/07 20:26:08 by snarain          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int	colors(t_mlx *data)
 		mlx_pixel_put(data->mlx, data->win, 
 				WINDOW_WIDTH / 10, WINDOW_HEIGHT / 10, RED_PIXEL);
 	return (0);
-}
+}*/
 
 int	handle_keypress(int keysym, t_mlx *data)
 {
@@ -56,8 +56,6 @@ int	handle_keypress(int keysym, t_mlx *data)
 		data->win = NULL;
 		exit(EXIT_SUCCESS);
 	}
-	printf("Number of step = %d\n", data->i);
-	data->i += 1;
 	return (0);
 }
 
@@ -78,7 +76,7 @@ int	key_hook(int keysym, t_mlx *data)
 		mlx_put_image_to_window(data->mlx, data->win, data->img, 80, 200);
 	}
 	return (0);
-}*/
+}
 
 int main(int ac, char **av)
 {
@@ -86,6 +84,10 @@ int main(int ac, char **av)
 	if (ac == 2)
 	{
 		check_file(av[1], &data);
+		init_mlx(&data);
+		mlx_hook(data.win, KeyPress, KeyPressMask, &handle_keypress, &data);
+		mlx_key_hook(data.win, key_hook, &data);
+		mlx_loop(data.mlx);
 	}
 	else
 		printf("WRONG ARGUMENNTS NUMBERS !\n");
