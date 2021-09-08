@@ -6,7 +6,7 @@
 /*   By: snarain <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/10 19:19:06 by snarain           #+#    #+#             */
-/*   Updated: 2021/09/07 20:26:08 by snarain          ###   ########.fr       */
+/*   Updated: 2021/09/08 21:37:09 by snarain          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ int	key_hook(int keysym, t_mlx *data)
 	if (keysym == 100)
 	{
 		data->img = mlx_xpm_file_to_image(data->mlx, path_xpm, &hei, &wid);
-		mlx_put_image_to_window(data->mlx, data->win, data->img, 80, 200);
+		mlx_put_image_to_window(data->mlx, data->win, data->img, 96, 96);
 	}
 	return (0);
 }

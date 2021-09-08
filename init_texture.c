@@ -6,7 +6,7 @@
 /*   By: snarain <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 16:12:44 by snarain           #+#    #+#             */
-/*   Updated: 2021/09/08 20:26:12 by snarain          ###   ########.fr       */
+/*   Updated: 2021/09/08 21:39:55 by snarain          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,21 +27,20 @@ void	put_block(t_mlx *data, char *path, int pos, int y)
 }
 void	render(t_mlx *data, int pos, int x, int y)
 {
-	printf("pos = %d\n , x = %d\n, y = %d\n",pos,x,y);
 	if (y == 0 && x == 0)
 		put_block(data, WALL_LUP, pos, y);
 	else if (y == 0 && x == (data->map.width - 1))
 		put_block(data, WALL_RUP, pos, y);
 	else if (y == (data->map.length - 1) && x == 0)
 		put_block(data, WALL_LDOWN, pos, y);
-	else if ((y == (data->map.length - 1)) && (x == (data->map.length - 1)))
-		put_block(data, WALL_LUP, pos, y);
+	else if ((y == (data->map.length - 1)) && (x == (data->map.width - 1)))
+		put_block(data, WALL_RDOWN, pos, y);
 	else if (y == 0 && (x != 0 || x != (data->map.width -1)))
 		put_block(data, WALL_UP, pos, y);
 	else if (y == (data->map.length - 1) && (x != 0 || x != (data->map.width -1)))
 		put_block(data, WALL_DOWN, pos, y);
 	else
-		put_block(data, WALL, pos, y);
+		put_block(data, GRASS, pos, y);
 }
 void	init_map(t_mlx *data)
 {
