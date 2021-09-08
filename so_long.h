@@ -6,7 +6,7 @@
 /*   By: snarain <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/10 21:53:42 by snarain           #+#    #+#             */
-/*   Updated: 2021/09/07 18:51:25 by snarain          ###   ########.fr       */
+/*   Updated: 2021/09/08 20:16:58 by snarain          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,19 @@
 # define S 115
 # define A 97
 # define ESC 65307
+# define BLOCK	48
 
 /*
  *	WALL
  */
-
-# define BLOCK	64
-# define WALL "./xpm/bricks.xpm"
-# define GRASS "./xpm/mossover.xpm"
+# define WALL_RDOWN "./xpm/WALL_RDOWN.xpm"
+# define WALL_LDOWN "./xpm/WALL_LDOWN.xpm"
+# define WALL_RUP "./xpm/WALL_RUP.xpm"
+# define WALL_LUP "./xpm/WALL_LUP.xpm"
+# define WALL_UP "./xpm/WALL.xpm"
+# define WALL_DOWN "./xpm/WALL.xpm"
+# define WALL "./xpm/WALL_UP.xpm"
+# define GRASS "./xpm/GRASS.xpm"
 
 /*
  *	LUFFY
