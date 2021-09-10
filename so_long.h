@@ -48,7 +48,9 @@
  *	LUFFY
  */
 
-# define LUFFY_STRAIGHT	"./xpm/Luffy.xpm"
+# define LUFFY "./xpm/Luffy.xpm"
+# define LUFFY_MOVE "./xpm/Luffy_move.xpm"
+# define LUFFY_JUMP "./xpm/Luffy_jump.xpm"
 
 /*
  *	COLLECTIBLES
@@ -80,8 +82,6 @@ typedef struct s_pos
 {
 	int	x;
 	int	y;
-	int	width;
-	int	height;
 }		t_pos;
 
 typedef struct s_mlx
@@ -93,10 +93,10 @@ typedef struct s_mlx
 	int		win_length;
 	int		width;
 	int		length;
-	t_img img_Luffy;
-	t_img img_wall;
-	t_img img_wall_in;
-	t_img img_grass;
+	t_img 	img_Luffy;
+	t_img 	img_wall;
+	t_img 	img_wall_in;
+	t_img 	img_grass;
 	t_map	map;
 	t_pos	pos;
 }	t_mlx;
@@ -117,5 +117,10 @@ int		check_name(char *av);
 int		check_square(t_mlx *data, char *line);
 int		init_mlx(t_mlx *data);
 void	ft_free(t_mlx *data);
+void 	init_data(t_mlx *data);
 
+
+/*d->display.addr[((d->pos.x + (d->draw.x_t * BLOCK)) * d->display.bpp >> 3) + ((d->pos.y + (d->draw.y_t * BLOCK)) * d->display.length)] = tile->addr[(x_sc * tile->bpp >> 3) + (y_sc * tile->length)];
+d->display.addr[((d->pos.x + (d->draw.x_t * BLOCK)) * d->display.bpp >> 3) + 1 ((d->pos.y + (d->draw.y_t * BLOCK)) * d->display.length)] = tile->addr[(x_sc * tile->bpp >> 3) + 1 + (y_sc * tile->length)];
+d->display.addr[((d->pos.x + (d->draw.x_t * BLOCK)) * d->display.bpp >> 3) + 2 + ((d->pos.y + (d->draw.y_t * BLOCK)) * d->display.length)] = tile->addr[(x_sc * tile->bpp >> 3) + 2 + (y_sc * tile->length)];*/
 #endif

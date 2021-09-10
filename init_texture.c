@@ -22,8 +22,7 @@
 		printf("CAN'T OPEN XPM");
 		ft_free(data);
 	}
-	mlx_put_image_to_window(data->mlx, data->win, data->img_wall.img,
-			pos, (y * BLOCK));
+	mlx_put_image_to_window(data->mlx, data->win, data->img_wall.img, pos, (y * BLOCK));
 }
 void	render(t_mlx *data, int pos, int x, int y)
 {
@@ -63,7 +62,8 @@ void	init_map(t_mlx *data)
 
 void get_addr(t_mlx *data, t_img *img)
 {
-img_wall->addr = mlx_get_data_addr(img->img, img->bpp, img->length, img->endian)
+	img->addr = mlx_get_data_addr(img->img, &img->bpp, &img->length, &img->endian)
+
 }
 
 int	init_mlx(t_mlx *data)

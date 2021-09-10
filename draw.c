@@ -5,23 +5,23 @@ void	draw_player_sprite(t_data *d, t_img *tile)
 	int x_sc;
 	int y_sc;
 
-	x_sc = (float)d->draw.x_s * ((float)tile->width / BLOCK);
-	y_sc = (float)d->draw.y_s * ((float)tile->height / BLOCK);
+	x_sc = (float)d->pos.x * ((float)tile->width / BLOCK);
+	y_sc = (float)d->pos.y * ((float)tile->height / BLOCK);
 	if (tile->addr[(x_sc * tile->bpp >> 3) + (y_sc * tile->length)] == 0
 		&& tile->addr[(x_sc * tile->bpp >> 3) + 1 + (y_sc * tile->length)] == 0
 		&& tile->addr[(x_sc * tile->bpp >> 3) + 2 + (y_sc * tile->length)] == 0)
 		return ;
-	d->display.addr[((d->draw.x_s + (d->pos.x * BLOCK)) //R
+	d->display.addr[((d->pos.x + (d->pos.x * BLOCK)) //R
 			* d->display.bpp >> 3) //width
-			+ ((d->draw.y_s + (d->pos.y * BLOCK)) * d->display.length)] //height
+			+ ((d->pos.y + (d->pos.y * BLOCK)) * d->display.length)] //height
 			= tile->addr[(x_sc * tile->bpp >> 3) + (y_sc * tile->length)];
-	d->display.addr[((d->draw.x_s + (d->pos.x * BLOCK)) //G
+	d->display.addr[((d->pos.x + (d->pos.x * BLOCK)) //G
 			* d->display.bpp >> 3) + 1 //width
-			+ ((d->draw.y_s + (d->pos.y * BLOCK)) * d->display.length)] //height
+			+ ((d->pos.y + (d->pos.y * BLOCK)) * d->display.length)] //height
 			= tile->addr[(x_sc * tile->bpp >> 3) + 1 + (y_sc * tile->length)];
-	d->display.addr[((d->draw.x_s + (d->pos.x * BLOCK)) //B
+	d->display.addr[((d->pos.x + (d->pos.x * BLOCK)) //B
 			* d->display.bpp >> 3) + 2 //width
-			+ ((d->draw.y_s + (d->pos.y * BLOCK)) * d->display.length)] //height
+			+ ((d->pos.y + (d->pos.y * BLOCK)) * d->display.length)] //height
 			= tile->addr[(x_sc * tile->bpp >> 3) + 2 + (y_sc * tile->length)];
 }
 
@@ -48,23 +48,23 @@ void	draw_sprite(t_data *d, t_img *tile)
 	int x_sc;
 	int y_sc;
 
-	x_sc = (float)d->draw.x_s * ((float)tile->width / BLOCK);
-	y_sc = (float)d->draw.y_s * ((float)tile->height / BLOCK);
+	x_sc = (float)d->pos.x * ((float)tile->width / BLOCK);
+	y_sc = (float)d->pos.y * ((float)tile->height / BLOCK);
 	if (tile->addr[(x_sc * tile->bpp >> 3) + (y_sc * tile->length)] == 0
 		&& tile->addr[(x_sc * tile->bpp >> 3) + 1 + (y_sc * tile->length)] == 0
 		&& tile->addr[(x_sc * tile->bpp >> 3) + 2 + (y_sc * tile->length)] == 0)
 		return ;
-	d->display.addr[((d->draw.x_s + (d->draw.x_t * BLOCK)) //R
+	d->display.addr[((d->pos.x + (d->draw.x_t * BLOCK)) //R
 			* d->display.bpp >> 3) //width
-			+ ((d->draw.y_s + (d->draw.y_t * BLOCK)) * d->display.length)] //height
+			+ ((d->pos.y + (d->draw.y_t * BLOCK)) * d->display.length)] //height
 			= tile->addr[(x_sc * tile->bpp >> 3) + (y_sc * tile->length)];
-	d->display.addr[((d->draw.x_s + (d->draw.x_t * BLOCK)) //G
+	d->display.addr[((d->pos.x + (d->draw.x_t * BLOCK)) //G
 			* d->display.bpp >> 3) + 1 //width
-			+ ((d->draw.y_s + (d->draw.y_t * BLOCK)) * d->display.length)] //height
+			+ ((d->pos.y + (d->draw.y_t * BLOCK)) * d->display.length)] //height
 			= tile->addr[(x_sc * tile->bpp >> 3) + 1 + (y_sc * tile->length)];
-	d->display.addr[((d->draw.x_s + (d->draw.x_t * BLOCK)) //B
+	d->display.addr[((d->pos.x + (d->draw.x_t * BLOCK)) //B
 			* d->display.bpp >> 3) + 2 //width
-			+ ((d->draw.y_s + (d->draw.y_t * BLOCK)) * d->display.length)] //height
+			+ ((d->pos.y + (d->draw.y_t * BLOCK)) * d->display.length)] //height
 			= tile->addr[(x_sc * tile->bpp >> 3) + 2 + (y_sc * tile->length)];
 }
 
@@ -98,19 +98,19 @@ void	draw_tile(t_data *d, t_img *tile)
 	int x_sc;
 	int y_sc;
 
-	x_sc = (float)d->draw.x_s * ((float)tile->width / BLOCK);
-	y_sc = (float)d->draw.y_s * ((float)tile->height / BLOCK);
-	d->display.addr[((d->draw.x_s + (d->draw.x_t * BLOCK)) //R
+	x_sc = (float)d->pos.x * ((float)tile->width / BLOCK);
+	y_sc = (float)d->pos.y * ((float)tile->height / BLOCK);
+	d->display.addr[((d->pos.x + (d->draw.x_t * BLOCK)) //R
 			* d->display.bpp >> 3) //width
-			+ ((d->draw.y_s + (d->draw.y_t * BLOCK)) * d->display.length)] //height
+			+ ((d->pos.y + (d->draw.y_t * BLOCK)) * d->display.length)] //height
 			= tile->addr[(x_sc * tile->bpp >> 3) + (y_sc * tile->length)];
-	d->display.addr[((d->draw.x_s + (d->draw.x_t * BLOCK)) //G
+	d->display.addr[((d->pos.x + (d->draw.x_t * BLOCK)) //G
 			* d->display.bpp >> 3) + 1 //width
-			+ ((d->draw.y_s + (d->draw.y_t * BLOCK)) * d->display.length)] //height
+			+ ((d->pos.y + (d->draw.y_t * BLOCK)) * d->display.length)] //height
 			= tile->addr[(x_sc * tile->bpp >> 3) + 1 + (y_sc * tile->length)];
-	d->display.addr[((d->draw.x_s + (d->draw.x_t * BLOCK)) //B
+	d->display.addr[((d->pos.x + (d->draw.x_t * BLOCK)) //B
 			* d->display.bpp >> 3) + 2 //width
-			+ ((d->draw.y_s + (d->draw.y_t * BLOCK)) * d->display.length)] //height
+			+ ((d->pos.y + (d->draw.y_t * BLOCK)) * d->display.length)] //height
 			= tile->addr[(x_sc * tile->bpp >> 3) + 2 + (y_sc * tile->length)];
 }
 
@@ -134,7 +134,6 @@ void	draw_tiles(t_data *data, char tile)
 
 int	draw(t_data *data)
 {
-
 	data->pos.y = 0;
 
 	while(data->pos.y < data->map.length)

@@ -31,7 +31,6 @@ int	check_open(t_mlx *data, char *av)
 {
 	char	*line;
 
-	data->map.fd = 0;
 	data->map.fd = open(av, O_RDONLY);
 	if (!data->map.fd)
 	{
@@ -51,8 +50,7 @@ int	check_file(char *av, t_mlx *data)
 {
 	char	*line;
 
-	data->map.length = 1;
-	data->map.width = 0;
+	init_data(data);
 	data->map.tmp = ft_strdupG("");
 	check_open(data, av);
 	while (get_next_line(data->map.fd, &line) == 1)

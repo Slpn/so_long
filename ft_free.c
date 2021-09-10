@@ -17,9 +17,13 @@ void	rm_image(t_mlx *data)
 	if (data->img_wall.img != NULL)
 		mlx_destroy_image(data->mlx, data->img_wall.img);
 	if (data->img_wall_in.img != NULL)
-		mlx_destroy_image(data->mlx, data->img_wall.img);
-	if (data->img_wall.img != NULL)
-			mlx_destroy_image(data->mlx, data->img_wall.img);
+		mlx_destroy_image(data->mlx, data->img_wall_in.img);
+	if (data->img_grass.img != NULL)
+		mlx_destroy_image(data->mlx, data->img_grass.img);
+	if (data->img_grass.img != NULL)
+		mlx_destroy_image(data->mlx, data->img_grass.img);
+	if (data->map.tmp != NULL)
+		free(data->map.tmp);
 }
 
 void	ft_free(t_mlx *data)
