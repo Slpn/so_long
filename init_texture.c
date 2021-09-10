@@ -12,17 +12,17 @@
 
 #include "so_long.h"
 
-void	put_block(t_mlx *data, char *path, int pos, int y)
+/*void	put_block(t_mlx *data, char *path, int pos, int y)
 {
 
-	data->img_wall.img = mlx_xpm_file_to_image(data->mlx, path, 
+	data->img_wall.img = mlx_xpm_file_to_image(data->mlx, path,
 			&data->width, &data->length);
 	if (!data->img_wall.img)
 	{
 		printf("CAN'T OPEN XPM");
 		ft_free(data);
 	}
-	mlx_put_image_to_window(data->mlx, data->win, data->img_wall.img, 
+	mlx_put_image_to_window(data->mlx, data->win, data->img_wall.img,
 			pos, (y * BLOCK));
 }
 void	render(t_mlx *data, int pos, int x, int y)
@@ -48,7 +48,7 @@ void	init_map(t_mlx *data)
 		pos = 0;
 		while (x < data->map.width)
 		{
-			if (data->map.tab[y][x] == '1')	
+			if (data->map.tab[y][x] == '1')
 				render(data, pos, x, y);
 			if (data->map.tab[y][x] == '0')
 				put_block(data, GRASS, pos, y);
@@ -59,6 +59,11 @@ void	init_map(t_mlx *data)
 		}
 		y++;
 	}
+}*/
+
+void get_addr(t_mlx *data, t_img *img)
+{
+img_wall->addr = mlx_get_data_addr(img->img, img->bpp, img->length, img->endian)
 }
 
 int	init_mlx(t_mlx *data)

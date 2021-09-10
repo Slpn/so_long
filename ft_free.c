@@ -15,7 +15,11 @@
 void	rm_image(t_mlx *data)
 {
 	if (data->img_wall.img != NULL)
-		mlx_destroy_image(data->mlx, data->img_wall.img)
+		mlx_destroy_image(data->mlx, data->img_wall.img);
+	if (data->img_wall_in.img != NULL)
+		mlx_destroy_image(data->mlx, data->img_wall.img);
+	if (data->img_wall.img != NULL)
+			mlx_destroy_image(data->mlx, data->img_wall.img);
 }
 
 void	ft_free(t_mlx *data)

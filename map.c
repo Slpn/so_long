@@ -76,8 +76,8 @@ int	ft_check(char *line)
 	i = 0;
 	while (line[i])
 	{
-		if (line[i] == '0' || line[i] == '1' || line[i] == 'C' || 
-				line[i] == 'E' || line[i] == 'P' || 
+		if (line[i] == '0' || line[i] == '1' || line[i] == 'C' ||
+				line[i] == 'E' || line[i] == 'P' ||
 				line[i] == '\n' || line[i] =='\0')
 			i++;
 		else
@@ -90,7 +90,7 @@ int	parse_map(t_mlx *data)
 {
 	in_map(data);
 	if (ft_check(data->map.tmp) == -1 || check_rect(data) == 0 ||
-			data->map.player != 1 || data->map.collect == 0 || 
+			data->map.player != 1 || data->map.collect == 0 ||
 			data->map.exit == 0)
 	{
 		printf("ERROR : MAP ERROR !\n");

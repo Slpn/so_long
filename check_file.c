@@ -30,7 +30,7 @@ int	check_name(char *av)
 int	check_open(t_mlx *data, char *av)
 {
 	char	*line;
-	
+
 	data->map.fd = 0;
 	data->map.fd = open(av, O_RDONLY);
 	if (!data->map.fd)

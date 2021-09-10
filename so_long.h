@@ -72,9 +72,17 @@ typedef struct	s_img
 	void	*img;
 	char	*addr;
 	int		bpp;
-	int		line_length;
+	int		length;
 	int		endian;
 }				t_img;
+
+typedef struct s_pos
+{
+	int	x;
+	int	y;
+	int	width;
+	int	height;
+}		t_pos;
 
 typedef struct s_mlx
 {
@@ -85,11 +93,12 @@ typedef struct s_mlx
 	int		win_length;
 	int		width;
 	int		length;
-	t_pixel img_Luffy;
-	t_pixel img_wall;
-	t_pixel img_wall_in;
-	t_pixel img_grass;
+	t_img img_Luffy;
+	t_img img_wall;
+	t_img img_wall_in;
+	t_img img_grass;
 	t_map	map;
+	t_pos	pos;
 }	t_mlx;
 
 typedef struct s_rect
