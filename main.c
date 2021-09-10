@@ -61,8 +61,6 @@ int	handle_keypress(int keysym, t_mlx *data)
 
 int	key_hook(int keysym, t_mlx *data)
 {
-	int	y = 10;
-	int	x = 10;
 	char *path_xpm = "./xpm/Luffy.xpm";
 	int hei;
 	int wid;

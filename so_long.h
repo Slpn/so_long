@@ -6,7 +6,7 @@
 /*   By: snarain <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/10 21:53:42 by snarain           #+#    #+#             */
-/*   Updated: 2021/09/08 20:16:58 by snarain          ###   ########.fr       */
+/*   Updated: 2021/09/10 02:56:51 by snarain          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,8 @@
 /*
  *	WALL
  */
-# define WALL_RDOWN "./xpm/WALL_RDOWN.xpm"
-# define WALL_LDOWN "./xpm/WALL_LDOWN.xpm"
-# define WALL_RUP "./xpm/WALL_RUP.xpm"
-# define WALL_LUP "./xpm/WALL_LUP.xpm"
-# define WALL_UP "./xpm/WALL.xpm"
-# define WALL_DOWN "./xpm/WALL.xpm"
-# define WALL "./xpm/WALL_UP.xpm"
+# define WALL "./xpm/WALL.xpm"
+# define WALL_IN "./xpm/WALL_IN.xpm"
 # define GRASS "./xpm/GRASS.xpm"
 
 /*
@@ -72,14 +67,14 @@ typedef struct	m_map
 	int		length;
 }	t_map;
 
-typedef struct	s_pixel
+typedef struct	s_img
 {
 	void	*img;
 	char	*addr;
 	int		bpp;
 	int		line_length;
 	int		endian;
-}				t_pixel;
+}				t_img;
 
 typedef struct s_mlx
 {
@@ -92,7 +87,8 @@ typedef struct s_mlx
 	int		length;
 	t_pixel img_Luffy;
 	t_pixel img_wall;
-	t_pixel img_others;
+	t_pixel img_wall_in;
+	t_pixel img_grass;
 	t_map	map;
 }	t_mlx;
 
@@ -112,4 +108,5 @@ int		check_name(char *av);
 int		check_square(t_mlx *data, char *line);
 int		init_mlx(t_mlx *data);
 void	ft_free(t_mlx *data);
+
 #endif
