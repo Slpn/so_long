@@ -1,3 +1,5 @@
+#include "so_long.h"
+
 void init_data(t_mlx *data)
 {
     data->img_wall.img = NULL;
@@ -6,4 +8,6 @@ void init_data(t_mlx *data)
     data->img_Luffy.img = NULL;
     data->map.length = 1;
     data->map.width = 0;
+    data->map.collect = 0;
+    data->moves = 0;
 }

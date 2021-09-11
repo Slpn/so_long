@@ -1,9 +1,9 @@
 #include "../include/so_long.h"
 
-void	draw_player_sprite(t_data *d, t_img *tile)
+void	draw_player_sprite(t_mlx *d, t_img *tile)
 {
-	int x_sc;
-	int y_sc;
+	int	x_sc;
+	int	y_sc;
 
 	x_sc = (float)d->pos.x * ((float)tile->width / BLOCK);
 	y_sc = (float)d->pos.y * ((float)tile->height / BLOCK);
@@ -11,29 +11,29 @@ void	draw_player_sprite(t_data *d, t_img *tile)
 		&& tile->addr[(x_sc * tile->bpp >> 3) + 1 + (y_sc * tile->length)] == 0
 		&& tile->addr[(x_sc * tile->bpp >> 3) + 2 + (y_sc * tile->length)] == 0)
 		return ;
-	d->display.addr[((d->pos.x + (d->pos.x * BLOCK)) //R
-			* d->display.bpp >> 3) //width
-			+ ((d->pos.y + (d->pos.y * BLOCK)) * d->display.length)] //height
+	d->ground.addr[((d->pos.x + (d->pos.x * BLOCK)) //R
+			* d->ground.bpp >> 3) //width
+			+ ((d->pos.y + (d->pos.y * BLOCK)) * d->ground.length)] //height
 			= tile->addr[(x_sc * tile->bpp >> 3) + (y_sc * tile->length)];
-	d->display.addr[((d->pos.x + (d->pos.x * BLOCK)) //G
-			* d->display.bpp >> 3) + 1 //width
-			+ ((d->pos.y + (d->pos.y * BLOCK)) * d->display.length)] //height
+	d->ground.addr[((d->pos.x + (d->pos.x * BLOCK)) //G
+			* d->ground.bpp >> 3) + 1 //width
+			+ ((d->pos.y + (d->pos.y * BLOCK)) * d->ground.length)] //height
 			= tile->addr[(x_sc * tile->bpp >> 3) + 1 + (y_sc * tile->length)];
-	d->display.addr[((d->pos.x + (d->pos.x * BLOCK)) //B
-			* d->display.bpp >> 3) + 2 //width
-			+ ((d->pos.y + (d->pos.y * BLOCK)) * d->display.length)] //height
+	d->ground.addr[((d->pos.x + (d->pos.x * BLOCK)) //B
+			* d->ground.bpp >> 3) + 2 //width
+			+ ((d->pos.y + (d->pos.y * BLOCK)) * d->ground.length)] //height
 			= tile->addr[(x_sc * tile->bpp >> 3) + 2 + (y_sc * tile->length)];
 }
 
-void draw_player(t_data *data)
+void draw_player(t_mlx *data)
 {
 	data->draw.y_s = 0;
-	while(data->draw.y_s < BLOCK)
+	while (data->draw.y_s < BLOCK)
 	{
 		data->draw.x_s = 0;
-		while(data->draw.x_s < BLOCK)
+		while (data->draw.x_s < BLOCK)
 		{
-			if(data->pos.right)
+			if (data->pos.right)
 				draw_player_sprite(data, &data->player);
 			else
 				draw_player_sprite(data, &data->player_l);
@@ -43,10 +43,10 @@ void draw_player(t_data *data)
 	}
 }
 
-void	draw_sprite(t_data *d, t_img *tile)
+void	draw_sprite(t_mlx *d, t_img *tile)
 {
-	int x_sc;
-	int y_sc;
+	int	x_sc;
+	int	y_sc;
 
 	x_sc = (float)d->pos.x * ((float)tile->width / BLOCK);
 	y_sc = (float)d->pos.y * ((float)tile->height / BLOCK);
@@ -54,67 +54,67 @@ void	draw_sprite(t_data *d, t_img *tile)
 		&& tile->addr[(x_sc * tile->bpp >> 3) + 1 + (y_sc * tile->length)] == 0
 		&& tile->addr[(x_sc * tile->bpp >> 3) + 2 + (y_sc * tile->length)] == 0)
 		return ;
-	d->display.addr[((d->pos.x + (d->draw.x_t * BLOCK)) //R
-			* d->display.bpp >> 3) //width
-			+ ((d->pos.y + (d->draw.y_t * BLOCK)) * d->display.length)] //height
+	d->ground.addr[((d->pos.x + (d->draw.x_t * BLOCK)) //R
+			* d->ground.bpp >> 3) //width
+			+ ((d->pos.y + (d->draw.y_t * BLOCK)) * d->ground.length)] //height
 			= tile->addr[(x_sc * tile->bpp >> 3) + (y_sc * tile->length)];
-	d->display.addr[((d->pos.x + (d->draw.x_t * BLOCK)) //G
-			* d->display.bpp >> 3) + 1 //width
-			+ ((d->pos.y + (d->draw.y_t * BLOCK)) * d->display.length)] //height
+	d->ground.addr[((d->pos.x + (d->draw.x_t * BLOCK)) //G
+			* d->ground.bpp >> 3) + 1 //width
+			+ ((d->pos.y + (d->draw.y_t * BLOCK)) * d->ground.length)] //height
 			= tile->addr[(x_sc * tile->bpp >> 3) + 1 + (y_sc * tile->length)];
-	d->display.addr[((d->pos.x + (d->draw.x_t * BLOCK)) //B
-			* d->display.bpp >> 3) + 2 //width
-			+ ((d->pos.y + (d->draw.y_t * BLOCK)) * d->display.length)] //height
+	d->ground.addr[((d->pos.x + (d->draw.x_t * BLOCK)) //B
+			* d->ground.bpp >> 3) + 2 //width
+			+ ((d->pos.y + (d->draw.y_t * BLOCK)) * d->ground.length)] //height
 			= tile->addr[(x_sc * tile->bpp >> 3) + 2 + (y_sc * tile->length)];
 }
 
-void	draw_sprites(t_data *data, int tile)
+void	draw_sprites(t_mlx *d, char tile)
 {
-	data->draw.y_s = 0;
-	while(data->draw.y_s < BLOCK)
+	d->draw.y_s = 0;
+	while (d->draw.y_s < TILE_SIZE)
 	{
-		data->draw.x_s = 0;
-		while(data->draw.x_s < BLOCK)
+		d->draw.x_s = 0;
+		while (d->draw.x_s < TILE_SIZE)
 		{
-			if(tile == 2)
-				draw_sprite(data,&data->cp);
-			else if(tile == 4)
-				draw_sprite(data,&data->cp_t);
-			else if(tile == 3)
-				{
-					if (data->nb_cp_t < data->nb_cp)
-						draw_sprite(data,&data->exit);
-					else
-						draw_sprite(data,&data->exit_open);
-				}
-			data->draw.x_s++;
+			if (tile == 'C')
+				draw_sprite(d, &d->collectible);
+			else if (tile == 'T')
+				draw_sprite(d, &d->collectible_taken);
+			else if (tile == 'E')
+			{
+				if (d->nb_collectibles_taken == d->nb_collectibles)
+					draw_sprite(d, &d->exit_open[d->door_frame]);
+				else
+					draw_sprite(d, &d->exit_close);
+			}
+			d->draw.x_s++;
 		}
-		data->draw.y_s++;
+		d->draw.y_s++;
 	}
 }
 
-void	draw_tile(t_data *d, t_img *tile)
+void	draw_tile(t_mlx *d, t_img *tile)
 {
-	int x_sc;
-	int y_sc;
+	int	x_sc;
+	int	y_sc;
 
 	x_sc = (float)d->pos.x * ((float)tile->width / BLOCK);
 	y_sc = (float)d->pos.y * ((float)tile->height / BLOCK);
-	d->display.addr[((d->pos.x + (d->draw.x_t * BLOCK)) //R
-			* d->display.bpp >> 3) //width
-			+ ((d->pos.y + (d->draw.y_t * BLOCK)) * d->display.length)] //height
+	d->ground.addr[((d->pos.x + (d->draw.x_t * BLOCK)) //R
+			* d->ground.bpp >> 3) //width
+			+ ((d->pos.y + (d->draw.y_t * BLOCK)) * d->ground.length)] //height
 			= tile->addr[(x_sc * tile->bpp >> 3) + (y_sc * tile->length)];
-	d->display.addr[((d->pos.x + (d->draw.x_t * BLOCK)) //G
-			* d->display.bpp >> 3) + 1 //width
-			+ ((d->pos.y + (d->draw.y_t * BLOCK)) * d->display.length)] //height
+	d->ground.addr[((d->pos.x + (d->draw.x_t * BLOCK)) //G
+			* d->ground.bpp >> 3) + 1 //width
+			+ ((d->pos.y + (d->draw.y_t * BLOCK)) * d->ground.length)] //height
 			= tile->addr[(x_sc * tile->bpp >> 3) + 1 + (y_sc * tile->length)];
-	d->display.addr[((d->pos.x + (d->draw.x_t * BLOCK)) //B
-			* d->display.bpp >> 3) + 2 //width
-			+ ((d->pos.y + (d->draw.y_t * BLOCK)) * d->display.length)] //height
+	d->ground.addr[((d->pos.x + (d->draw.x_t * BLOCK)) //B
+			* d->ground.bpp >> 3) + 2 //width
+			+ ((d->pos.y + (d->draw.y_t * BLOCK)) * d->ground.length)] //height
 			= tile->addr[(x_sc * tile->bpp >> 3) + 2 + (y_sc * tile->length)];
 }
 
-void	draw_tiles(t_data *data, char tile)
+void	draw_tiles(t_mlx *data, char tile)
 {
 	data->draw.y_s = 0;
 	while (data->draw.y_s < BLOCK)
@@ -132,10 +132,9 @@ void	draw_tiles(t_data *data, char tile)
 	}
 }
 
-int	draw(t_data *data)
+int	draw(t_mlx *data)
 {
 	data->pos.y = 0;
-
 	while(data->pos.y < data->map.length)
 	{
 		data->pos.x = 0;
@@ -150,6 +149,6 @@ int	draw(t_data *data)
 	}
 	draw_player(data);
 	mlx_put_image_to_window(data->mlx, data->win,
-		data->display.img, 0, 0);
+		data->ground.img, 0, 0);
 	return (0);
 }
