@@ -88,8 +88,8 @@ typedef struct s_pos
 	int 	move;
 	int		x;
 	int		y;
-	int		x_t;
-	int		y_t;
+	int		x_s;
+	int		y_s;
 }		t_pos;
 
 typedef struct s_mlx
@@ -115,15 +115,6 @@ typedef struct s_mlx
 	t_pos	pos;
 	t_pos	posP;
 }	t_mlx;
-
-typedef struct s_rect
-{
-	int	x;
-	int	y;
-	int	width;
-	int	height;
-	int color;
-}		t_rect;
 
 int		get_next_line(int fd, char **line);
 int		parse_map(t_mlx *data);
