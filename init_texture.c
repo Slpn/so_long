@@ -13,6 +13,17 @@
 #include "so_long.h"
 
 
+
+void	init_ground(t_mlx *d)
+{
+	d->ground.img = mlx_new_image(d->mlx_ptr, d->win_width, d->win_length);
+	d->ground.addr = mlx_get_data_addr(d->ground.img,
+			&d->ground.bpp, &d->ground.length, &d->ground.endian);
+	if (!d->ground.img || !d->ground.addr)
+		exit(0);
+	//d->ground_load = true;
+}
+
 int	init_mlx(t_mlx *data)
 {
 	data->win_width = (data->map.width * BLOCK);
@@ -25,4 +36,5 @@ int	init_mlx(t_mlx *data)
 	if (!data->win)
 		ft_free(data);
 	return (0);
+	init_sprites_and_tiles(data);
 }

@@ -14,14 +14,14 @@
 
 void	rm_image(t_mlx *data)
 {
-	if (data->img_wall.img != NULL)
-		mlx_destroy_image(data->mlx, data->img_wall.img);
-	if (data->img_wall_in.img != NULL)
-		mlx_destroy_image(data->mlx, data->img_wall_in.img);
-	if (data->img_grass.img != NULL)
-		mlx_destroy_image(data->mlx, data->img_grass.img);
-	if (data->img_grass.img != NULL)
-		mlx_destroy_image(data->mlx, data->img_grass.img);
+	if (data->wall.img != NULL)
+		mlx_destroy_image(data->mlx, data->wall.img);
+	if (data->wall_in.img != NULL)
+		mlx_destroy_image(data->mlx, data->wall_in.img);
+	if (data->grass.img != NULL)
+		mlx_destroy_image(data->mlx, data->grass.img);
+	if (data->Luffy.img != NULL)
+		mlx_destroy_image(data->mlx, data->Luffy.img);
 	if (data->map.tmp != NULL)
 		free(data->map.tmp);
 }

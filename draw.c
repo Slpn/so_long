@@ -1,4 +1,4 @@
-#include "../include/so_long.h"
+#include "so_long.h"
 
 void	draw_player_sprite(t_mlx *d, t_img *tile)
 {
@@ -28,7 +28,7 @@ void	draw_player_sprite(t_mlx *d, t_img *tile)
 void draw_player(t_mlx *data)
 {
 	data->draw.y_s = 0;
-	while (data->draw.y_s < BLOCK)
+	while (data->posP.y < BLOCK)
 	{
 		data->draw.x_s = 0;
 		while (data->draw.x_s < BLOCK)
@@ -77,16 +77,7 @@ void	draw_sprites(t_mlx *d, char tile)
 		while (d->draw.x_s < TILE_SIZE)
 		{
 			if (tile == 'C')
-				draw_sprite(d, &d->collectible);
-			else if (tile == 'T')
-				draw_sprite(d, &d->collectible_taken);
-			else if (tile == 'E')
-			{
-				if (d->nb_collectibles_taken == d->nb_collectibles)
-					draw_sprite(d, &d->exit_open[d->door_frame]);
-				else
-					draw_sprite(d, &d->exit_close);
-			}
+				draw_sprite(d, &d->fruit);
 			d->draw.x_s++;
 		}
 		d->draw.y_s++;

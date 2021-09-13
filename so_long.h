@@ -63,7 +63,6 @@ typedef struct	m_map
 	char	*tmp;
 	int		fd;
 	int		player;
-	int		collect;
 	int		exit;
 	int		width;
 	int		length;
@@ -75,6 +74,7 @@ typedef struct	s_img
 	char	*addr;
 	int		bpp;
 	int		length;
+	int		width;
 	int		endian;
 }				t_img;
 
@@ -94,11 +94,15 @@ typedef struct s_mlx
 	int		width;
 	int		length;
 	int		moves;
+	int		item;
 	t_img 	ground;
 	t_img 	Luffy;
+	t_img 	Luffy_move;
+	t_img 	Luffy_jump;
 	t_img 	wall;
 	t_img 	wall_in;
 	t_img 	grass;
+	t_img	fruit;
 	t_map	map;
 	t_pos	pos;
 	t_pos	posP;
@@ -121,7 +125,9 @@ int		check_square(t_mlx *data, char *line);
 int		init_mlx(t_mlx *data);
 void	ft_free(t_mlx *data);
 void 	init_data(t_mlx *data);
-int		key_hook(int key, t_data *d);
+int		key_hook(int key, t_mlx *d);
+void	init_sprites_and_tiles(t_mlx *d);
+int	draw(t_mlx *data);
 
 /*d->display.addr[((d->pos.x + (d->draw.x_t * BLOCK)) * d->display.bpp >> 3) + ((d->pos.y + (d->draw.y_t * BLOCK)) * d->display.length)] = tile->addr[(x_sc * tile->bpp >> 3) + (y_sc * tile->length)];
 d->display.addr[((d->pos.x + (d->draw.x_t * BLOCK)) * d->display.bpp >> 3) + 1 ((d->pos.y + (d->draw.y_t * BLOCK)) * d->display.length)] = tile->addr[(x_sc * tile->bpp >> 3) + 1 + (y_sc * tile->length)];

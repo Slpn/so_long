@@ -61,7 +61,7 @@ int	in_map(t_mlx *data)
 		if (*data->map.tmp == 'P')
 			data->map.player += 1;
 		if (*data->map.tmp == 'C')
-			data->map.collect += 1;
+			data->item += 1;
 		if (*data->map.tmp == 'E')
 			data->map.exit += 1;
 		data->map.tmp++;
@@ -97,6 +97,6 @@ int	parse_map(t_mlx *data)
 		exit(EXIT_FAILURE);
 	}
 	else
-		printf("GOOD MAP!\n");
+		printf("GOOD MAP !\n");
 	return (0);
 }
