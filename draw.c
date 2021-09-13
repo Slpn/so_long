@@ -91,8 +91,7 @@ void	draw_tile(t_mlx *d, t_img *tile)
 
 	x_sc = (float)d->pos.x_s * ((float)tile->width / BLOCK);
 	y_sc = (float)d->pos.y_s * ((float)tile->length / BLOCK);
-	printf("SCALE = %d\n",x_sc);
-	printf("SCALE = %d\n",y_sc);
+
 	d->ground.addr[((d->pos.x_s + (d->pos.x * BLOCK)) * d->ground.bpp >> 3) //width
 			+ ((d->pos.y_s + (d->pos.y * BLOCK)) * d->ground.length)] //length
 			= tile->addr[(x_sc * tile->bpp >> 3) + (y_sc * tile->length)];

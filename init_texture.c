@@ -30,11 +30,12 @@ int	init_mlx(t_mlx *data)
 	data->win_length = (data->map.length * BLOCK);
 	data->mlx = mlx_init();
 	if (!data->mlx)
-		ft_free(data);
+		exit(0);
 	data->win = mlx_new_window(data->mlx, data->win_width, data->win_length,
 			"so_long");
 	if (!data->win)
-		ft_free(data);
-	return (0);
+		exit(0);
+	init_ground(data);
 	init_sprites_and_tiles(data);
+	return (0);
 }

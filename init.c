@@ -11,4 +11,7 @@ void init_data(t_mlx *data)
     data->map.width = 0;
     data->moves = 0;
     data->item = 0;
+    data->ground.img = NULL;
+    data->mlx = NULL;
+    data->win = NULL;
 }
