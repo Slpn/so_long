@@ -16,7 +16,7 @@
 
 void	init_ground(t_mlx *d)
 {
-	d->ground.img = mlx_new_image(d->mlx_ptr, d->win_width, d->win_length);
+	d->ground.img = mlx_new_image(d->mlx, d->win_width, d->win_length);
 	d->ground.addr = mlx_get_data_addr(d->ground.img,
 			&d->ground.bpp, &d->ground.length, &d->ground.endian);
 	if (!d->ground.img || !d->ground.addr)

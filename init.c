@@ -9,7 +9,6 @@ void init_data(t_mlx *data)
     data->fruit.img = NULL;
     data->map.length = 1;
     data->map.width = 0;
-    data->map.collect = 0;
     data->moves = 0;
     data->item = 0;
 }

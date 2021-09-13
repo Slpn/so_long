@@ -24,6 +24,7 @@ void	right(t_mlx *d)
 {
 	if (d->map.tab[d->posP.y][d->posP.x + 1] != '1')
 	{
+//		d->posP.right = RIGHT;
 		d->posP.x++;
 		d->moves++;
 	}
@@ -43,7 +44,7 @@ void	left(t_mlx *d)
 int	key_hook(int key, t_mlx *d)
 {
 	if (key == ESC)
-		exit_game(d);
+		exit(0);
 	else if (key == W)
 		up(d);
 	else if (key == S)
@@ -53,6 +54,11 @@ int	key_hook(int key, t_mlx *d)
 	else if (key == A)
 		left(d);
 	printf("MOVES = %d\n", d->moves);
+	if (d->map.tab[d->posP.y][d->posP.x] == 'C')
+	{
+			d->map.tab[d->posP.y][d->posP.x] = '0';
+			d->item--;
+	}
 	if (d->map.tab[d->posP.y][d->posP.x] == 'E'
 		&& d->item == 0)
 	{

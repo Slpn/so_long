@@ -3,7 +3,7 @@
 void	init_tex(t_mlx *d, t_img *tex, char *path)
 {
 	tex->img = mlx_xpm_file_to_image(d->mlx, path,
-			&tex->width, &tex->height);
+			&tex->width, &tex->length);
 	if (!tex->img)
 	{
 		printf("ERROR : %s\n", path);

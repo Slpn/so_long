@@ -37,6 +37,11 @@
 # define ESC 65307
 # define BLOCK	48
 
+# define UP 1
+# define DOWN 2
+# define LEFT 3
+# define RIGHT 4
+
 /*
  *	WALL
  */
@@ -80,8 +85,11 @@ typedef struct	s_img
 
 typedef struct s_pos
 {
-	int	x;
-	int	y;
+	int 	move;
+	int		x;
+	int		y;
+	int		x_t;
+	int		y_t;
 }		t_pos;
 
 typedef struct s_mlx

@@ -54,7 +54,7 @@ int	check_rect(t_mlx *data)
 int	in_map(t_mlx *data)
 {
 	data->map.player = 0;
-	data->map.collect = 0;
+	data->item = 0;
 	data->map.exit = 0;
 	while (*data->map.tmp)
 	{
@@ -90,7 +90,7 @@ int	parse_map(t_mlx *data)
 {
 	in_map(data);
 	if (ft_check(data->map.tmp) == -1 || check_rect(data) == 0
-		|| data->map.player != 1 || data->map.collect == 0
+		|| data->map.player != 1 || data->item == 0
 		|| data->map.exit == 0)
 	{
 		printf("ERROR : MAP ERROR !\n");
