@@ -14,7 +14,8 @@
 
 void	init_ground(t_mlx *d)
 {
-	d->ground.addr = NULL;
+	// d->ground.addr = NULL;
+	// printf("%d %d\n", d->win_width, d->win_length);
 	d->ground.img = mlx_new_image(d->mlx, d->win_width, d->win_length);
 	d->ground.addr = mlx_get_data_addr(d->ground.img,
 			&d->ground.bpp, &d->ground.line, &d->ground.endian);
@@ -27,6 +28,7 @@ void	init_mlx(t_mlx *data)
 {
 	data->win_width = (data->map.width * BLOCK);
 	data->win_length = (data->map.length * BLOCK);
+	// printf("%d %d\n", data->map.width, data->map.length);
 	data->mlx = mlx_init();
 	if (!data->mlx)
 		exit(0);

@@ -12,6 +12,18 @@
 
 #include "so_long.h"
 
+void print_map(t_mlx data)
+{
+	for (unsigned int i = 0; i < data.map.length; i++)
+	{
+		for (unsigned int j = 0; j < data.map.width; j++)
+		{
+			printf("%c", data.map.tab[i][j]);
+		}
+		printf("\n");
+	}
+}
+
 void	free_tmp(char *map)
 {
 	int	i;
@@ -79,5 +91,6 @@ t_mlx	check_file(char *av)
 	close (data.map.fd);
 	init_mlx(&data);
 	free_tmp(data.map.tmp);
+	// print_map(data);
 	return (data);
 }
