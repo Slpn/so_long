@@ -12,6 +12,19 @@
 
 #include "so_long.h"
 
+void	free_map(char **map)
+{
+	int	i;
+
+	i = 0;
+	while (map[i])
+	{
+		free(map[i]);
+		i++;
+	}
+	free(map);
+}
+
 void	rm_image(t_mlx *data)
 {
 	if (data->wall.img != NULL)
@@ -28,6 +41,8 @@ void	rm_image(t_mlx *data)
 
 void	ft_free(t_mlx *data)
 {
+	free_map(data->map.tab);
+	rm_image(data);
 	free(data);
 	exit(0);
 }

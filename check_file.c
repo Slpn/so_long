@@ -12,6 +12,18 @@
 
 #include "so_long.h"
 
+void	free_tmp(char *map)
+{
+	int	i;
+
+	i = 0;
+	while (map[i])
+	{
+		free(map);
+		i++;
+	}
+}
+
 int	check_name(char *av)
 {
 	int	i;
@@ -46,23 +58,26 @@ int	check_open(t_mlx *data, char *av)
 	return (0);
 }
 
-int	check_file(char *av, t_mlx *data)
+t_mlx	check_file(char *av)
 {
+	t_mlx	data;
 	char	*line;
 
-	init_data(data);
-	data->map.tmp = ft_strdupG("");
-	check_open(data, av);
-	while (get_next_line(data->map.fd, &line) == 1)
+	init_data(&data);
+	data.map.tmp = ft_strdupG("");
+	check_open(&data, av);
+	while (get_next_line(data.map.fd, &line) == 1)
 	{
-		check_square(data, line);
+		check_square(&data, line);
 		line = ft_strjoinG(line, "\n");
-		data->map.tmp = ft_strjoinG(data->map.tmp, line);
-		data->map.length += 1;
+		data.map.tmp = ft_strjoinG(data.map.tmp, line);
+		data.map.length += 1;
 		free(line);
 	}
-	data->map.tab = ft_split(data->map.tmp, '\n');
-	parse_map(data);
-	close (data->map.fd);
-	return (0);
+	data.map.tab = ft_split(data.map.tmp, '\n');
+	parse_map(&data);
+	close (data.map.fd);
+	init_mlx(&data);
+	free_tmp(data.map.tmp);
+	return (data);
 }
