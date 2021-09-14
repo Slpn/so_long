@@ -46,6 +46,7 @@ int	check_name(char *av)
 	if (ft_strncmp((av + i), ".ber", 4) != 0)
 	{
 		printf("WRONG FILE FORMAT !\n");
+		free_tmp(data->map.tmp);
 		exit(EXIT_FAILURE);
 	}
 	return (0);
@@ -76,7 +77,6 @@ t_mlx	check_file(char *av)
 	char	*line;
 
 	init_data(&data);
-	data.map.tmp = ft_strdupG("");
 	check_open(&data, av);
 	while (get_next_line(data.map.fd, &line) == 1)
 	{
@@ -91,7 +91,7 @@ t_mlx	check_file(char *av)
 	close (data.map.fd);
 	init_mlx(&data);
 	free_tmp(data.map.tmp);
-	free(line);
-	// print_map(data);
+	if (line != NULL)
+		free(line);
 	return (data);
 }

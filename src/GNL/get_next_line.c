@@ -54,7 +54,7 @@ int	get_next_line(int fd, char **line)
 	static char	buffer[BUFFER_SIZE + 1];
 	int			ret;
 
-	if (fd < 0 || !line || BUFFER_SIZE < 0 || read(fd, "", 0) == -1)
+	if (fd <= 0 || !line || BUFFER_SIZE < 0 || read(fd, "", 0) == -1)
 		return (-1);
 	ret = 1;
 	*line = ft_strdupG("");
