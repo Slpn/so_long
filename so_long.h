@@ -37,11 +37,6 @@
 # define ESC 65307
 # define BLOCK	48
 
-# define UP 1
-# define DOWN 2
-# define LEFT 3
-# define RIGHT 4
-
 /*
  *	WALL
  */
@@ -61,6 +56,14 @@
  *	COLLECTIBLES
  */
 # define DEMON_FRUIT "./xpm/demon_fruit.xpm"
+
+typedef enum s_dir
+{
+	UP,
+	DOWN,
+	RIGHT,
+	LEFT
+}	t_dir;
 
 typedef struct	m_map
 {

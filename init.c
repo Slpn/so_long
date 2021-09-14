@@ -14,4 +14,5 @@ void init_data(t_mlx *data)
     data->ground.img = NULL;
     data->mlx = NULL;
     data->win = NULL;
+    data->posP.move = DOWN;
 }

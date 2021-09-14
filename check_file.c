@@ -12,7 +12,7 @@
 
 #include "so_long.h"
 
-void print_map(t_mlx data)
+/*void print_map(t_mlx data)
 {
 	for (unsigned int i = 0; i < data.map.length; i++)
 	{
@@ -22,7 +22,7 @@ void print_map(t_mlx data)
 		}
 		printf("\n");
 	}
-}
+}*/
 
 void	free_tmp(char *map)
 {
@@ -91,6 +91,7 @@ t_mlx	check_file(char *av)
 	close (data.map.fd);
 	init_mlx(&data);
 	free_tmp(data.map.tmp);
+	free(line);
 	// print_map(data);
 	return (data);
 }

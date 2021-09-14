@@ -35,21 +35,19 @@ void	rm_image(t_mlx *data)
 		mlx_destroy_image(data->mlx, data->grass.img);
 	if (data->Luffy.img != NULL)
 		mlx_destroy_image(data->mlx, data->Luffy.img);
-	if (data->map.tmp != NULL)
-		free(data->map.tmp);
+	if (data->Luffy_move.img != NULL)
+		mlx_destroy_image(data->mlx, data->Luffy_move.img);
+	if (data->Luffy_jump.img != NULL)
+		mlx_destroy_image(data->mlx, data->Luffy_jump.img);
+	if (data->fruit.img != NULL)
+		mlx_destroy_image(data->mlx, data->fruit.img);
 }
 
 void	ft_free(t_mlx *data)
 {
 	free_map(data->map.tab);
 	rm_image(data);
-	free(data);
-	exit(0);
-}
-
-void	close_win(t_mlx *data)
-{
 	mlx_destroy_window(data->mlx, data->win);
-	rm_image(data);
+	//free(data);
 	exit(0);
 }

@@ -1,0 +1,1 @@
+gcc -Lmlx -lXext -lX11 *.c src/GNL/*.c src/libft/*.c -I/usr/include -L/usr/lib  -Imlx_linux -lm mlx/libmlx_Linux.a -g && ./a.out test_map.ber
