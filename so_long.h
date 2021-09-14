@@ -23,13 +23,10 @@
 # include "./src/libft/libft.h"
 # include "./src/GNL/get_next_line.h"
 
-# define MLX_ERROR		1
-# define RED_PIXEL		0xFF0000
-# define GREEN_PIXEL	0xFF00
-
 /*
  * TOUCH
  */
+
 # define W 119
 # define D 100
 # define S 115
@@ -40,9 +37,10 @@
 /*
  *	WALL
  */
-# define WALL "./xpm/WALL.xpm"
-# define WALL_IN "./xpm/WALL_IN.xpm"
+# define WALL "./xpm/WALL_IN.xpm"
+# define WALL_IN "./xpm/wather.xpm"
 # define GRASS "./xpm/GRASS.xpm"
+# define TMP "./xpm/bricks.xpm"
 
 /*
  *	LUFFY
@@ -115,6 +113,7 @@ typedef struct s_mlx
 	t_img 	wall_in;
 	t_img 	grass;
 	t_img	fruit;
+	t_img	tmp;
 	t_map	map;
 	t_pos	pos;
 	t_pos	posP;
@@ -123,7 +122,7 @@ typedef struct s_mlx
 int		get_next_line(int fd, char **line);
 int		parse_map(t_mlx *data);
 t_mlx	check_file(char *av);
-int		check_name(char *av);
+void	check_name(char *av);
 int		check_square(t_mlx *data, char *line);
 void	init_mlx(t_mlx *data);
 void	ft_free(t_mlx *data);
@@ -131,6 +130,7 @@ void 	init_data(t_mlx *data);
 int		key_hook(int key, t_mlx *d);
 void	init_sprites_and_tiles(t_mlx *d);
 int		draw(t_mlx *data);
+void	free_map(char **map);
 
 /*d->display.addr[((d->pos.x + (d->draw.x_t * BLOCK)) * d->display.bpp >> 3) + ((d->pos.y + (d->draw.y_t * BLOCK)) * d->display.length)] = tile->addr[(x_sc * tile->bpp >> 3) + (y_sc * tile->length)];
 d->display.addr[((d->pos.x + (d->draw.x_t * BLOCK)) * d->display.bpp >> 3) + 1 ((d->pos.y + (d->draw.y_t * BLOCK)) * d->display.length)] = tile->addr[(x_sc * tile->bpp >> 3) + 1 + (y_sc * tile->length)];

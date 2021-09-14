@@ -12,17 +12,6 @@
 
 #include "so_long.h"
 
-int	handle_keypress(int keysym, t_mlx *data)
-{
-	if (keysym == XK_Escape)
-	{
-		mlx_destroy_window(data->mlx, data->win);
-		data->win = NULL;
-		exit(EXIT_SUCCESS);
-	}
-	return (0);
-}
-
 int	main(int ac, char **av)
 {
 	t_mlx	data;
@@ -30,11 +19,9 @@ int	main(int ac, char **av)
 	if (ac == 2)
 	{
 		data = check_file(av[1]);
-		data.posP.x = 1;
-		data.posP.y = 1;
-		//mlx_hook(data.win, KeyPress, KeyPressMask, &handle_keypress, &data);
 		mlx_loop_hook(data.mlx, draw, &data);
 		mlx_key_hook(data.win, key_hook, &data);
+		mlx_do_sync(data.mlx);
 		mlx_loop(data.mlx);
 	}
 	else

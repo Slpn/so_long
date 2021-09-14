@@ -46,8 +46,12 @@ void	rm_image(t_mlx *data)
 void	ft_free(t_mlx *data)
 {
 	free_map(data->map.tab);
-	rm_image(data);
-	mlx_destroy_window(data->mlx, data->win);
-	//free(data);
+	if (data->mlx != NULL)
+	{
+		if (data->win != NULL)
+				rm_image(data);
+		mlx_destroy_window(data->mlx, data->win);
+	}
+	free(data->mlx);
 	exit(0);
 }

@@ -24,19 +24,7 @@
 	}
 }*/
 
-void	free_tmp(char *map)
-{
-	int	i;
-
-	i = 0;
-	while (map[i])
-	{
-		free(map);
-		i++;
-	}
-}
-
-int	check_name(char *av)
+void check_name(char *av)
 {
 	int	i;
 
@@ -45,24 +33,22 @@ int	check_name(char *av)
 		i++;
 	if (ft_strncmp((av + i), ".ber", 4) != 0)
 	{
-		printf("WRONG FILE FORMAT !\n");
-		free_tmp(data->map.tmp);
+		printf("ERROR : WRONG FILE FORMAT !\n");
 		exit(EXIT_FAILURE);
 	}
-	return (0);
 }
 
 int	check_open(t_mlx *data, char *av)
 {
 	char	*line;
 
+	check_name(av);
 	data->map.fd = open(av, O_RDONLY);
 	if (!data->map.fd)
 	{
-		printf("CAN'T OPEN THIS FILE !\n");
+		printf("ERROR : CAN'T OPEN THIS FILE !\n");
 		exit(0);
 	}
-	check_name(av);
 	get_next_line(data->map.fd, &line);
 	data->map.width = ft_strlenG(line);
 	line = ft_strjoinG(line, "\n");
@@ -90,7 +76,7 @@ t_mlx	check_file(char *av)
 	parse_map(&data);
 	close (data.map.fd);
 	init_mlx(&data);
-	free_tmp(data.map.tmp);
+	free(data.map.tmp);
 	if (line != NULL)
 		free(line);
 	return (data);

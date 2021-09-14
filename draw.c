@@ -73,7 +73,9 @@ void	draw_sprites(t_mlx *d, char tile)
 		while (d->pos.x_s < BLOCK)
 		{
 			if (tile == 'C')
-				draw_sprite(d, &d->wall);
+				draw_sprite(d, &d->fruit);
+			else if (tile == 'E')
+				draw_sprite(d, &d->tmp);
 			d->pos.x_s++;
 		}
 		d->pos.y_s++;
@@ -108,7 +110,14 @@ void	draw_tiles(t_mlx *data, char tile)
 		while (data->pos.x_s < BLOCK)
 		{
 			if (tile == '1')
-				draw_tile(data, &data->wall_in);
+			{
+				if (data->pos.x != 0 && data->pos.y != 0
+					&& data->pos.y != (data->map.length - 1)
+					&& data->pos.x != (data->map.width - 1))
+					draw_tile(data, &data->wall_in);
+				else
+					draw_tile(data, &data->wall);
+			}
 			else
 				draw_tile(data, &data->grass);
 			data->pos.x_s++;
@@ -119,8 +128,6 @@ void	draw_tiles(t_mlx *data, char tile)
 
 int	draw(t_mlx *data)
 {
-
-
 	data->pos.y = 0;
 	while(data->pos.y < data->map.length)
 	{

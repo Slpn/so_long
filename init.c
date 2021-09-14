@@ -15,4 +15,8 @@ void init_data(t_mlx *data)
     data->mlx = NULL;
     data->win = NULL;
     data->posP.move = DOWN;
+    data->map.player = 0;
+    data->item = 0;
+    data->map.exit = 0;
+    data->map.tmp = NULL;
 }

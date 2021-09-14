@@ -51,22 +51,30 @@ int	check_rect(t_mlx *data)
 	return (1);
 }
 
-int	in_map(t_mlx *data)
+void	in_map(t_mlx *data)
 {
-	data->map.player = 0;
-	data->item = 0;
-	data->map.exit = 0;
-	while (*data->map.tmp)
+	int x;
+	int y;
+
+	x = -1;
+	y = -1;
+	while (++y < data->map.length)
 	{
-		if (*data->map.tmp == 'P')
+		x = -1;
+		while (++x < data->map.width)
+		{
+			if (data->map.tab[y][x] == 'P')
+			{
 			data->map.player += 1;
-		if (*data->map.tmp == 'C')
-			data->item += 1;
-		if (*data->map.tmp == 'E')
-			data->map.exit += 1;
-		data->map.tmp++;
+			data->posP.x = x;
+			data->posP.y = y;
+			}
+			else if (data->map.tab[y][x] == 'C')
+				data->item += 1;
+			else if (data->map.tab[y][x] == 'E')
+				data->map.exit += 1;
+		}
 	}
-	return (0);
 }
 
 int	ft_check(char *line)
@@ -88,12 +96,18 @@ int	ft_check(char *line)
 
 int	parse_map(t_mlx *data)
 {
+	int x;
+	int y;
+
+	x = -1;
+	y = -1;
 	in_map(data);
 	if (ft_check(*data->map.tab) == -1 || check_rect(data) == 0
 		|| data->map.player != 1 || data->item == 0
 		|| data->map.exit == 0)
 	{
 		printf("ERROR : MAP ERROR !\n");
+		free_map(data->map.tab);
 		exit(EXIT_FAILURE);
 	}
 	else
