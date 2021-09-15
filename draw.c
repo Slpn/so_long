@@ -32,6 +32,8 @@ void draw_player(t_mlx *data)
 		{
 			if (data->posP.move == LEFT)
 				draw_player_sprite(data, &data->Luffy_move);
+			else if (data->posP.move == RIGHT)
+				draw_player_sprite(data, &data->Luffy_movel);
 			else if (data->posP.move == UP)
 				draw_player_sprite(data, &data->Luffy_jump);
 			else
@@ -74,8 +76,10 @@ void	draw_sprites(t_mlx *d, char tile)
 		{
 			if (tile == 'C')
 				draw_sprite(d, &d->fruit);
+			else if (tile == 'E' && d->item == 0)
+				draw_sprite(d, &d->door_open);
 			else if (tile == 'E')
-				draw_sprite(d, &d->tmp);
+				draw_sprite(d, &d->door);
 			d->pos.x_s++;
 		}
 		d->pos.y_s++;

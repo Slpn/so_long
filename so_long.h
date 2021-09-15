@@ -32,7 +32,7 @@
 # define S 115
 # define A 97
 # define ESC 65307
-# define BLOCK	48
+# define BLOCK 48
 
 /*
  *	WALL
@@ -40,7 +40,8 @@
 # define WALL "./xpm/WALL_IN.xpm"
 # define WALL_IN "./xpm/wather.xpm"
 # define GRASS "./xpm/GRASS.xpm"
-# define TMP "./xpm/bricks.xpm"
+# define DOOR "./xpm/door.xpm"
+# define DOOR_OPEN "./xpm/door_open.xpm"
 
 /*
  *	LUFFY
@@ -48,6 +49,7 @@
 
 # define LUFFY "./xpm/Luffy.xpm"
 # define LUFFY_MOVE "./xpm/Luffy_move.xpm"
+# define LUFFY_MOVEL "./xpm/Luffy_moveL.xpm"
 # define LUFFY_JUMP "./xpm/Luffy_jump.xpm"
 
 /*
@@ -108,12 +110,14 @@ typedef struct s_mlx
 	t_img 	ground;
 	t_img 	Luffy;
 	t_img 	Luffy_move;
+	t_img 	Luffy_movel;
 	t_img 	Luffy_jump;
 	t_img 	wall;
 	t_img 	wall_in;
 	t_img 	grass;
 	t_img	fruit;
-	t_img	tmp;
+	t_img	door;
+	t_img	door_open;
 	t_map	map;
 	t_pos	pos;
 	t_pos	posP;
@@ -132,7 +136,4 @@ void	init_sprites_and_tiles(t_mlx *d);
 int		draw(t_mlx *data);
 void	free_map(char **map);
 
-/*d->display.addr[((d->pos.x + (d->draw.x_t * BLOCK)) * d->display.bpp >> 3) + ((d->pos.y + (d->draw.y_t * BLOCK)) * d->display.length)] = tile->addr[(x_sc * tile->bpp >> 3) + (y_sc * tile->length)];
-d->display.addr[((d->pos.x + (d->draw.x_t * BLOCK)) * d->display.bpp >> 3) + 1 ((d->pos.y + (d->draw.y_t * BLOCK)) * d->display.length)] = tile->addr[(x_sc * tile->bpp >> 3) + 1 + (y_sc * tile->length)];
-d->display.addr[((d->pos.x + (d->draw.x_t * BLOCK)) * d->display.bpp >> 3) + 2 + ((d->pos.y + (d->draw.y_t * BLOCK)) * d->display.length)] = tile->addr[(x_sc * tile->bpp >> 3) + 2 + (y_sc * tile->length)];*/
 #endif
