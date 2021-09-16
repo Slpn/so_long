@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_free.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: snarain <snarain@student.42.fr>            +#+  +:+       +#+        */
+/*   By: snarain <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/04 01:02:09 by snarain           #+#    #+#             */
-/*   Updated: 2021/09/10 01:07:17 by snarain          ###   ########.fr       */
+/*   Created: 2021/09/16 19:35:14 by snarain           #+#    #+#             */
+/*   Updated: 2021/09/16 19:35:52 by snarain          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	ft_free(t_mlx *data)
 	if (data->mlx != NULL)
 	{
 		if (data->win != NULL)
-				rm_image(data);
+			rm_image(data);
 		mlx_destroy_display(data->mlx);
 	}
 	free(data->mlx);

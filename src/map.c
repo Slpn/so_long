@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: snarain <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/02 18:55:54 by snarain           #+#    #+#             */
-/*   Updated: 2021/09/06 21:19:08 by snarain          ###   ########.fr       */
+/*   Created: 2021/09/16 19:37:58 by snarain           #+#    #+#             */
+/*   Updated: 2021/09/16 19:38:03 by snarain          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,8 @@ int	check_rect(t_mlx *data)
 
 void	in_map(t_mlx *data)
 {
-	int x;
-	int y;
+	int	x;
+	int	y;
 
 	x = -1;
 	y = -1;
@@ -65,9 +65,9 @@ void	in_map(t_mlx *data)
 		{
 			if (data->map.tab[y][x] == 'P')
 			{
-			data->map.player += 1;
-			data->posP.x = x;
-			data->posP.y = y;
+				data->map.player += 1;
+				data->posP.x = x;
+				data->posP.y = y;
 			}
 			else if (data->map.tab[y][x] == 'C')
 				data->item += 1;
@@ -86,7 +86,7 @@ int	ft_check(char *line)
 	{
 		if (line[i] == '0' || line[i] == '1' || line[i] == 'C'
 			|| line[i] == 'E' || line[i] == 'P' || line[i] == '\n'
-			|| line[i] =='\0')
+			|| line[i] == '\0')
 			i++;
 		else
 			return (-1);
@@ -96,8 +96,8 @@ int	ft_check(char *line)
 
 int	parse_map(t_mlx *data)
 {
-	int x;
-	int y;
+	int	x;
+	int	y;
 
 	x = -1;
 	y = -1;

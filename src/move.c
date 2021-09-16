@@ -58,8 +58,8 @@ int	key_hook(int key, t_mlx *d)
 		left(d);
 	if (d->map.tab[d->posP.y][d->posP.x] == 'C')
 	{
-			d->map.tab[d->posP.y][d->posP.x] = '0';
-			d->item--;
+		d->map.tab[d->posP.y][d->posP.x] = '0';
+		d->item--;
 	}
 	if (d->map.tab[d->posP.y][d->posP.x] == 'E'
 		&& d->item == 0)

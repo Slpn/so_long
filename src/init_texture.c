@@ -6,7 +6,7 @@
 /*   By: snarain <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 16:12:44 by snarain           #+#    #+#             */
-/*   Updated: 2021/09/09 19:39:17 by snarain          ###   ########.fr       */
+/*   Updated: 2021/09/16 19:23:28 by snarain          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,7 @@ void	init_ground(t_mlx *d)
 	d->ground.addr = mlx_get_data_addr(d->ground.img,
 			&d->ground.bpp, &d->ground.line, &d->ground.endian);
 	if (!d->ground.img || !d->ground.addr)
-		exit(0);
-	//d->ground_load = true;
+		ft_free(d);
 }
 
 void	init_mlx(t_mlx *data)
