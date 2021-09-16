@@ -51,9 +51,9 @@ void	draw_sprite(t_mlx *d, t_img *tile)
 
 	x_sc = (float)d->pos.x_s * ((float)tile->width / (float)BLOCK);
 	y_sc = (float)d->pos.y_s * ((float)tile->length / (float)BLOCK);
-	if (tile->addr[(x_sc * tile->bpp >> 3) + (y_sc * tile->length)] == 0
-		&& tile->addr[(x_sc * tile->bpp >> 3) + 1 + (y_sc * tile->length)] == 0
-		&& tile->addr[(x_sc * tile->bpp >> 3) + 2 + (y_sc * tile->length)] == 0)
+	if (tile->addr[(x_sc * tile->bpp >> 3) + (y_sc * tile->line)] == 0
+		&& tile->addr[(x_sc * tile->bpp >> 3) + 1 + (y_sc * tile->line)] == 0
+		&& tile->addr[(x_sc * tile->bpp >> 3) + 2 + (y_sc * tile->line)] == 0)
 		return ;
 		d->ground.addr[((d->pos.x_s + (d->pos.x * BLOCK)) * d->ground.bpp >> 3) //width
 				+ ((d->pos.y_s + (d->pos.y * BLOCK)) * d->ground.line)] //length
