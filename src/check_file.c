@@ -12,18 +12,6 @@
 
 #include "so_long.h"
 
-/*void print_map(t_mlx data)
-{
-	for (unsigned int i = 0; i < data.map.length; i++)
-	{
-		for (unsigned int j = 0; j < data.map.width; j++)
-		{
-			printf("%c", data.map.tab[i][j]);
-		}
-		printf("\n");
-	}
-}*/
-
 void	check_name(char *av)
 {
 	int	i;

@@ -78,26 +78,6 @@ void	draw_sprite(t_mlx *d, t_img *tile)
 		= tile->addr[(x_sc * tile->bpp >> 3) + 2 + (y_sc * tile->line)];
 }
 
-void	draw_sprites(t_mlx *d, char tile)
-{
-	d->pos.y_s = 0;
-	while (d->pos.y_s < BLOCK)
-	{
-		d->pos.x_s = 0;
-		while (d->pos.x_s < BLOCK)
-		{
-			if (tile == 'C')
-				draw_sprite(d, &d->fruit);
-			else if (tile == 'E' && d->item == 0)
-				draw_sprite(d, &d->door_open);
-			else if (tile == 'E')
-				draw_sprite(d, &d->door);
-			d->pos.x_s++;
-		}
-		d->pos.y_s++;
-	}
-}
-
 void	draw_tile(t_mlx *d, t_img *tile)
 {
 	int	x_sc;
@@ -114,49 +94,4 @@ void	draw_tile(t_mlx *d, t_img *tile)
 	d->ground.addr[((d->pos.x_s + (d->pos.x * BLOCK)) * d->ground.bpp >> 3) + 2
 		+ ((d->pos.y_s + (d->pos.y * BLOCK)) * d->ground.line)]
 		= tile->addr[(x_sc * tile->bpp >> 3) + 2 + (y_sc * tile->line)];
-}
-
-void	draw_tiles(t_mlx *data, char tile)
-{
-	data->pos.y_s = 0;
-	while (data->pos.y_s < BLOCK)
-	{
-		data->pos.x_s = 0;
-		while (data->pos.x_s < BLOCK)
-		{
-			if (tile == '1')
-			{
-				if (data->pos.x != 0 && data->pos.y != 0
-					&& data->pos.y != (data->map.length - 1)
-					&& data->pos.x != (data->map.width - 1))
-					draw_tile(data, &data->wall_in);
-				else
-					draw_tile(data, &data->wall);
-			}
-			else
-				draw_tile(data, &data->grass);
-			data->pos.x_s++;
-		}
-		data->pos.y_s++;
-	}
-}
-
-int	draw(t_mlx *data)
-{
-	data->pos.y = 0;
-	while (data->pos.y < data->map.length)
-	{
-		data->pos.x = 0;
-		while (data->pos.x < data->map.width)
-		{
-			draw_tiles(data, data->map.tab[data->pos.y][data->pos.x]);
-			if (data->map.tab[data->pos.y][data->pos.x] != 1)
-				draw_sprites(data, data->map.tab[data->pos.y][data->pos.x]);
-			data->pos.x++;
-		}
-		data->pos.y++;
-	}
-	draw_player(data);
-	mlx_put_image_to_window(data->mlx, data->win, data->ground.img, 0, 0);
-	return (0);
 }

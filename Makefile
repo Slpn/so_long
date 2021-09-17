@@ -6,7 +6,7 @@
 #    By: snarain <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/10 19:06:53 by snarain           #+#    #+#              #
-#    Updated: 2021/09/16 20:06:06 by snarain          ###   ########.fr        #
+#    Updated: 2021/09/17 19:58:27 by snarain          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,20 +22,19 @@ SRCS =	 ./src/GNL/get_next_line.c \
 		 ./src/init_texture.c \
 		 ./src/main.c \
 		 ./src/map.c \
-		 ./src/move.c \
-
+		 ./src/move.c 
 
 OBJS         = ${SRCS:.c=.o}
 
 UNAME        := $(shell uname)
 
-PATH_MLX	= ./mlx
+PATH_MLX	= ./mlx/
 
 CC			= gcc
 
 RM			= rm -f
 
-FLAGS		=  -Lmlx_linux -lmlx_linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o
+FLAGS		=  -Lmlx_linux -lmlx_linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz
 
 all:         ${NAME}
 

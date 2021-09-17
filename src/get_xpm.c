@@ -40,3 +40,27 @@ void	init_sprites_and_tiles(t_mlx *d)
 	init_tex(d, &d->door, DOOR);
 	init_tex(d, &d->door_open, DOOR_OPEN);
 }
+
+void	init_ground(t_mlx *d)
+{
+	d->ground.img = mlx_new_image(d->mlx, d->win_width, d->win_length);
+	d->ground.addr = mlx_get_data_addr(d->ground.img,
+			&d->ground.bpp, &d->ground.line, &d->ground.endian);
+	if (!d->ground.img || !d->ground.addr)
+		ft_free(d);
+}
+
+void	init_mlx(t_mlx *data)
+{
+	data->win_width = (data->map.width * BLOCK);
+	data->win_length = (data->map.length * BLOCK);
+	data->mlx = mlx_init();
+	if (!data->mlx)
+		ft_free(data);
+	data->win = mlx_new_window(data->mlx, data->win_width, data->win_length,
+			"so_long");
+	if (!data->win)
+		ft_free(data);
+	init_ground(data);
+	init_sprites_and_tiles(data);
+}

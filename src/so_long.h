@@ -6,7 +6,7 @@
 /*   By: snarain <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/10 21:53:42 by snarain           #+#    #+#             */
-/*   Updated: 2021/09/13 21:23:34 by snarain          ###   ########.fr       */
+/*   Updated: 2021/09/17 19:31:26 by snarain          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ typedef enum s_dir
 	LEFT
 }	t_dir;
 
-typedef struct	m_map
+typedef struct m_map
 {
 	char	**tab;
 	char	*tmp;
@@ -76,7 +76,7 @@ typedef struct	m_map
 	int		length;
 }	t_map;
 
-typedef struct	s_img
+typedef struct s_img
 {
 	void	*img;
 	char	*addr;
@@ -89,7 +89,7 @@ typedef struct	s_img
 
 typedef struct s_pos
 {
-	int 	move;
+	int		move;
 	int		x;
 	int		y;
 	int		x_s;
@@ -107,14 +107,14 @@ typedef struct s_mlx
 	int		length;
 	int		moves;
 	int		item;
-	t_img 	ground;
-	t_img 	Luffy;
-	t_img 	Luffy_move;
-	t_img 	Luffy_movel;
-	t_img 	Luffy_jump;
-	t_img 	wall;
-	t_img 	wall_in;
-	t_img 	grass;
+	t_img	ground;
+	t_img	Luffy;
+	t_img	Luffy_move;
+	t_img	Luffy_movel;
+	t_img	Luffy_jump;
+	t_img	wall;
+	t_img	wall_in;
+	t_img	grass;
 	t_img	fruit;
 	t_img	door;
 	t_img	door_open;
@@ -130,10 +130,14 @@ void	check_name(char *av);
 int		check_square(t_mlx *data, char *line);
 void	init_mlx(t_mlx *data);
 void	ft_free(t_mlx *data);
-void 	init_data(t_mlx *data);
+void	init_data(t_mlx *data);
 int		key_hook(int key, t_mlx *d);
 void	init_sprites_and_tiles(t_mlx *d);
 int		draw(t_mlx *data);
 void	free_map(char **map);
+void	draw_tile(t_mlx *d, t_img *tile);
+void	draw_sprite(t_mlx *d, t_img *tile);
+void	draw_player(t_mlx *data);
+void	draw_player_sprite(t_mlx *d, t_img *tile);
 
 #endif

@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: snarain <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/16 19:37:58 by snarain           #+#    #+#             */
-/*   Updated: 2021/09/16 19:38:03 by snarain          ###   ########.fr       */
+/*   Created: 2021/09/17 19:32:03 by snarain           #+#    #+#             */
+/*   Updated: 2021/09/17 19:32:06 by snarain          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ int	check_square(t_mlx *data, char *line)
 	{
 		printf("ERROR : WRONG MAP\n");
 		free(line);
+		if (data->map.tmp)
+			free(data->map.tmp);
 		exit(0);
 	}
 	return (0);
@@ -108,7 +110,8 @@ int	parse_map(t_mlx *data)
 	{
 		printf("ERROR : MAP ERROR !\n");
 		free_map(data->map.tab);
-		exit(EXIT_FAILURE);
+		free(data->map.tmp);
+		exit(0);
 	}
 	else
 		printf("GOOD MAP !\n");

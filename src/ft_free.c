@@ -37,6 +37,8 @@ void	rm_image(t_mlx *data)
 		mlx_destroy_image(data->mlx, data->Luffy.img);
 	if (data->Luffy_move.img != NULL)
 		mlx_destroy_image(data->mlx, data->Luffy_move.img);
+	if (data->Luffy_movel.img != NULL)
+		mlx_destroy_image(data->mlx, data->Luffy_movel.img);
 	if (data->Luffy_jump.img != NULL)
 		mlx_destroy_image(data->mlx, data->Luffy_jump.img);
 	if (data->fruit.img != NULL)
