@@ -98,11 +98,6 @@ int	ft_check(char *line)
 
 int	parse_map(t_mlx *data)
 {
-	int	x;
-	int	y;
-
-	x = -1;
-	y = -1;
 	in_map(data);
 	if (ft_check(*data->map.tab) == -1 || check_rect(data) == 0
 		|| data->map.player != 1 || data->item == 0
