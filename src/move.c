@@ -76,7 +76,7 @@ int	key_hook(int key, t_mlx *d)
 	if (d->map.tab[d->posP.y][d->posP.x] == 'E'
 		&& d->item == 0)
 	{
-		printf("WIN\n");
+		printf("YOU WIN !\n");
 		ft_free(d);
 	}
 	return (1);

@@ -16,7 +16,7 @@ int	check_square(t_mlx *data, char *line)
 {
 	if (data->map.width != ft_strlenG(line))
 	{
-		printf("ERROR : WRONG MAP\n");
+		printf("Error \n: WRONG MAP\n");
 		free(line);
 		if (data->map.tmp)
 			free(data->map.tmp);
@@ -103,7 +103,7 @@ int	parse_map(t_mlx *data)
 		|| data->map.player != 1 || data->item == 0
 		|| data->map.exit == 0)
 	{
-		printf("ERROR : MAP ERROR !\n");
+		printf("Error \n: MAP ERROR !\n");
 		free_map(data->map.tab);
 		free(data->map.tmp);
 		exit(0);

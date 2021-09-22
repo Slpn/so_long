@@ -21,7 +21,7 @@ void	check_name(char *av)
 		i++;
 	if (ft_strncmp((av + i), ".ber", 4) != 0)
 	{
-		printf("ERROR : WRONG FILE FORMAT !\n");
+		printf("Error : WRONG FILE FORMAT !\n");
 		exit(EXIT_FAILURE);
 	}
 }
@@ -29,12 +29,19 @@ void	check_name(char *av)
 int	check_open(t_mlx *data, char *av)
 {
 	char	*line;
+	int tmp;
 
-	check_name(av);
+	tmp = open(av,O_DIRECTORY);
+	if (tmp != -1)
+	{
+		printf("Error : IT'S DIRECTORY \n");
+		exit(0);
+	}
+	check_name(av)
 	data->map.fd = open(av, O_RDONLY);
 	if (!data->map.fd)
 	{
-		printf("ERROR : CAN'T OPEN THIS FILE !\n");
+		printf("Error \n CAN'T OPEN THIS FILE !\n");
 		exit(0);
 	}
 	get_next_line(data->map.fd, &line);

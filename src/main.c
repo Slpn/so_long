@@ -72,6 +72,7 @@ int	draw(t_mlx *data)
 		}
 		data->pos.y++;
 	}
+	mlx_do_sync(data->mlx);
 	draw_player(data);
 	mlx_put_image_to_window(data->mlx, data->win, data->ground.img, 0, 0);
 	return (0);
@@ -90,6 +91,6 @@ int	main(int ac, char **av)
 		mlx_loop(data.mlx);
 	}
 	else
-		printf("WRONG ARGUMENNTS NUMBERS !\n");
+		printf("Error \n WRONG ARGUMENNTS NUMBERS !\n");
 	return (0);
 }

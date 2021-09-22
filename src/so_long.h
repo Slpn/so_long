@@ -59,6 +59,7 @@
 
 typedef enum s_dir
 {
+	STRAIGHT,
 	UP,
 	DOWN,
 	RIGHT,

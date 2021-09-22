@@ -19,8 +19,7 @@ SRCS =	src/GNL/get_next_line.c \
 		src/init.c \
 		src/main.c \
 		src/map.c \
-		src/move.c \
-		src/libft/*.c
+		src/move.c 
 
 OBJS 		= ${SRCS:.c=.o}
 

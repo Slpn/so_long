@@ -26,7 +26,7 @@ void	init_data(t_mlx *data)
 	data->ground.img = NULL;
 	data->mlx = NULL;
 	data->win = NULL;
-	data->posP.move = DOWN;
+	data->posP.move = STRAIGHT;
 	data->map.player = 0;
 	data->item = 0;
 	data->map.exit = 0;
