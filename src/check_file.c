@@ -37,7 +37,7 @@ int	check_open(t_mlx *data, char *av)
 		printf("Error : IT'S DIRECTORY \n");
 		exit(0);
 	}
-	check_name(av)
+	check_name(av);
 	data->map.fd = open(av, O_RDONLY);
 	if (!data->map.fd)
 	{
