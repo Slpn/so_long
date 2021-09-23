@@ -14,46 +14,46 @@
 
 void	up(t_mlx *d)
 {
-	if (d->map.tab[d->posP.y - 1][d->posP.x] != '1')
+	if (d->map.tab[d->posp.y - 1][d->posp.x] != '1')
 	{
-		d->posP.y--;
+		d->posp.y--;
 		d->moves++;
 		printf("MOVES = %d\n", d->moves);
 	}
-	d->posP.move = UP;
+	d->posp.move = UP;
 }
 
 void	down(t_mlx *d)
 {
-	if (d->map.tab[d->posP.y + 1][d->posP.x] != '1')
+	if (d->map.tab[d->posp.y + 1][d->posp.x] != '1')
 	{
-		d->posP.y++;
+		d->posp.y++;
 		d->moves++;
 		printf("MOVES = %d\n", d->moves);
 	}
-	d->posP.move = DOWN;
+	d->posp.move = DOWN;
 }
 
 void	right(t_mlx *d)
 {
-	if (d->map.tab[d->posP.y][d->posP.x + 1] != '1')
+	if (d->map.tab[d->posp.y][d->posp.x + 1] != '1')
 	{
-		d->posP.x++;
+		d->posp.x++;
 		d->moves++;
 		printf("MOVES = %d\n", d->moves);
 	}
-	d->posP.move = RIGHT;
+	d->posp.move = RIGHT;
 }
 
 void	left(t_mlx *d)
 {
-	if (d->map.tab[d->posP.y][d->posP.x - 1] != '1')
+	if (d->map.tab[d->posp.y][d->posp.x - 1] != '1')
 	{
-		d->posP.x--;
+		d->posp.x--;
 		d->moves++;
 		printf("MOVES = %d\n", d->moves);
 	}
-	d->posP.move = LEFT;
+	d->posp.move = LEFT;
 }
 
 int	key_hook(int key, t_mlx *d)
@@ -68,12 +68,12 @@ int	key_hook(int key, t_mlx *d)
 		right(d);
 	else if (key == A)
 		left(d);
-	if (d->map.tab[d->posP.y][d->posP.x] == 'C')
+	if (d->map.tab[d->posp.y][d->posp.x] == 'C')
 	{
-		d->map.tab[d->posP.y][d->posP.x] = '0';
+		d->map.tab[d->posp.y][d->posp.x] = '0';
 		d->item--;
 	}
-	if (d->map.tab[d->posP.y][d->posP.x] == 'E'
+	if (d->map.tab[d->posp.y][d->posp.x] == 'E'
 		&& d->item == 0)
 	{
 		printf("YOU WIN !\n");

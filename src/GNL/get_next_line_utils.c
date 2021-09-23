@@ -12,7 +12,7 @@
 
 #include "get_next_line.h"
 
-int	ft_bzeroG(void *s)
+int	ft_bzerog(void *s)
 {
 	if (!s)
 		return (0);
@@ -21,7 +21,7 @@ int	ft_bzeroG(void *s)
 	return (0);
 }
 
-int	ft_strlenG(char *s)
+int	ft_strleng(char *s)
 {
 	int	i;
 
@@ -33,14 +33,14 @@ int	ft_strlenG(char *s)
 	return (i);
 }
 
-char	*ft_strjoinG(char *s1, char *s2)
+char	*ft_strjoing(char *s1, char *s2)
 {
 	int		i;
 	int		j;
 	char	*str;
 
 	i = -1;
-	j = ft_strlenG(s1) + ft_strlenG(s2);
+	j = ft_strleng(s1) + ft_strleng(s2);
 	str = malloc(sizeof(char) * (j + 1));
 	if (!str)
 		return (NULL);
@@ -59,7 +59,7 @@ char	*ft_strjoinG(char *s1, char *s2)
 	return (str);
 }
 
-int	ft_strchrG(char *s, char c)
+int	ft_strchrg(char *s, char c)
 {
 	int	i;
 
@@ -73,7 +73,7 @@ int	ft_strchrG(char *s, char c)
 	return (0);
 }
 
-char	*ft_strdupG(char *s)
+char	*ft_strdupg(char *s)
 {
 	int		i;
 	int		len;

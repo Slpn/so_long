@@ -32,10 +32,10 @@ void	init_sprites_and_tiles(t_mlx *d)
 	init_tex(d, &d->wall, WALL);
 	init_tex(d, &d->wall_in, WALL_IN);
 	init_tex(d, &d->grass, GRASS);
-	init_tex(d, &d->Luffy, LUFFY);
-	init_tex(d, &d->Luffy_move, LUFFY_MOVE);
-	init_tex(d, &d->Luffy_movel, LUFFY_MOVEL);
-	init_tex(d, &d->Luffy_jump, LUFFY_JUMP);
+	init_tex(d, &d->luffy, LUFFY);
+	init_tex(d, &d->luffy_move, LUFFY_MOVE);
+	init_tex(d, &d->luffy_movel, LUFFY_MOVEL);
+	init_tex(d, &d->luffy_jump, LUFFY_JUMP);
 	init_tex(d, &d->fruit, DEMON_FRUIT);
 	init_tex(d, &d->door, DOOR);
 	init_tex(d, &d->door_open, DOOR_OPEN);

@@ -85,6 +85,7 @@ int	main(int ac, char **av)
 	if (ac == 2)
 	{
 		data = check_file(av[1]);
+		mlx_hook(data.win, 33, 131072, &ft_free, &data);
 		mlx_loop_hook(data.mlx, draw, &data);
 		mlx_key_hook(data.win, key_hook, &data);
 		mlx_do_sync(data.mlx);

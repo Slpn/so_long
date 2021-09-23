@@ -33,14 +33,14 @@ void	rm_image(t_mlx *data)
 		mlx_destroy_image(data->mlx, data->wall_in.img);
 	if (data->grass.img != NULL)
 		mlx_destroy_image(data->mlx, data->grass.img);
-	if (data->Luffy.img != NULL)
-		mlx_destroy_image(data->mlx, data->Luffy.img);
-	if (data->Luffy_move.img != NULL)
-		mlx_destroy_image(data->mlx, data->Luffy_move.img);
-	if (data->Luffy_movel.img != NULL)
-		mlx_destroy_image(data->mlx, data->Luffy_movel.img);
-	if (data->Luffy_jump.img != NULL)
-		mlx_destroy_image(data->mlx, data->Luffy_jump.img);
+	if (data->luffy.img != NULL)
+		mlx_destroy_image(data->mlx, data->luffy.img);
+	if (data->luffy_move.img != NULL)
+		mlx_destroy_image(data->mlx, data->luffy_move.img);
+	if (data->luffy_movel.img != NULL)
+		mlx_destroy_image(data->mlx, data->luffy_movel.img);
+	if (data->luffy_jump.img != NULL)
+		mlx_destroy_image(data->mlx, data->luffy_jump.img);
 	if (data->fruit.img != NULL)
 		mlx_destroy_image(data->mlx, data->fruit.img);
 	if (data->door.img != NULL)
@@ -53,9 +53,10 @@ void	rm_image(t_mlx *data)
 		mlx_destroy_window(data->mlx, data->win);
 }
 
-void	ft_free(t_mlx *data)
+int	ft_free(t_mlx *data)
 {
-	free_map(data->map.tab);
+	if (data->map.tab != NULL)
+		free_map(data->map.tab);
 	if (data->mlx != NULL)
 	{
 		if (data->win != NULL)
@@ -64,4 +65,5 @@ void	ft_free(t_mlx *data)
 	}
 	free(data->mlx);
 	exit(0);
+	return (0);
 }

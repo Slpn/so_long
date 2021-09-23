@@ -109,10 +109,10 @@ typedef struct s_mlx
 	int		moves;
 	int		item;
 	t_img	ground;
-	t_img	Luffy;
-	t_img	Luffy_move;
-	t_img	Luffy_movel;
-	t_img	Luffy_jump;
+	t_img	luffy;
+	t_img	luffy_move;
+	t_img	luffy_movel;
+	t_img	luffy_jump;
 	t_img	wall;
 	t_img	wall_in;
 	t_img	grass;
@@ -121,7 +121,7 @@ typedef struct s_mlx
 	t_img	door_open;
 	t_map	map;
 	t_pos	pos;
-	t_pos	posP;
+	t_pos	posp;
 }	t_mlx;
 
 int		get_next_line(int fd, char **line);
@@ -130,7 +130,7 @@ t_mlx	check_file(char *av);
 void	check_name(char *av);
 int		check_square(t_mlx *data, char *line);
 void	init_mlx(t_mlx *data);
-void	ft_free(t_mlx *data);
+int		ft_free(t_mlx *data);
 void	init_data(t_mlx *data);
 int		key_hook(int key, t_mlx *d);
 void	init_sprites_and_tiles(t_mlx *d);

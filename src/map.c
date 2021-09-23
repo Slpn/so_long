@@ -14,7 +14,7 @@
 
 int	check_square(t_mlx *data, char *line)
 {
-	if (data->map.width != ft_strlenG(line))
+	if (data->map.width != ft_strleng(line))
 	{
 		printf("Error \n: WRONG MAP\n");
 		free(line);
@@ -68,8 +68,8 @@ void	in_map(t_mlx *data)
 			if (data->map.tab[y][x] == 'P')
 			{
 				data->map.player += 1;
-				data->posP.x = x;
-				data->posP.y = y;
+				data->posp.x = x;
+				data->posp.y = y;
 			}
 			else if (data->map.tab[y][x] == 'C')
 				data->item += 1;

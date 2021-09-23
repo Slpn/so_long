@@ -57,9 +57,9 @@ int	get_next_line(int fd, char **line)
 	if (fd <= 0 || !line || BUFFER_SIZE < 0 || read(fd, "", 0) == -1)
 		return (-1);
 	ret = 1;
-	*line = ft_strdupG("");
-	*line = ft_strjoinG(*line, buffer);
-	while (ft_strchrG(*line, '\n') == 0)
+	*line = ft_strdupg("");
+	*line = ft_strjoing(*line, buffer);
+	while (ft_strchrg(*line, '\n') == 0)
 	{
 		ret = read(fd, buffer, BUFFER_SIZE);
 		buffer[ret] = 0;
@@ -67,12 +67,12 @@ int	get_next_line(int fd, char **line)
 			return (-1);
 		if (ret == 0)
 			break ;
-		*line = ft_strjoinG(*line, buffer);
+		*line = ft_strjoing(*line, buffer);
 	}
-	if (ft_strchrG(*line, '\n') == 1)
+	if (ft_strchrg(*line, '\n') == 1)
 		*line = newline(*line);
 	if (ret == 0)
-		return (ft_bzeroG(buffer));
+		return (ft_bzerog(buffer));
 	savecheck(buffer);
 	return (1);
 }

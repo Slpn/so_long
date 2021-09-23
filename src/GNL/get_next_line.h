@@ -23,12 +23,12 @@
 void	savecheck(char *save);
 
 int		get_next_line(int fd, char **line);
-int		ft_strchrG(char *s, char c);
-int		ft_strlenG(char *s);
-int		ft_bzeroG(void *s);
+int		ft_strchrg(char *s, char c);
+int		ft_strleng(char *s);
+int		ft_bzerog(void *s);
 
-char	*ft_strdupG(char *s);
+char	*ft_strdupg(char *s);
 char	*newline(char *buffer);
-char	*ft_strjoinG(char *s1, char *s2);
+char	*ft_strjoing(char *s1, char *s2);
 
 #endif
