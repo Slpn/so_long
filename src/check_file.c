@@ -67,11 +67,11 @@ t_mlx	check_file(char *av)
 		free(line);
 	}
 	data.map.tab = ft_split(data.map.tmp, '\n');
+	if (line != NULL)
+		free(line);
 	parse_map(&data);
 	close (data.map.fd);
 	free(data.map.tmp);
 	init_mlx(&data);
-	if (line != NULL)
-		free(line);
 	return (data);
 }

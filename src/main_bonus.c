@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: snarain <marvin@42.fr>                     +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/10 19:19:06 by snarain           #+#    #+#             */
-/*   Updated: 2021/09/08 21:37:09 by snarain          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "so_long.h"
 
 void	draw_sprites(t_mlx *d, char tile)
@@ -22,10 +10,10 @@ void	draw_sprites(t_mlx *d, char tile)
 		{
 			if (tile == 'C')
 				draw_sprite(d, &d->fruit);
-			else if (tile == 'E')
+			else if (tile == 'E' && d->item == 0)
 				draw_sprite(d, &d->door_open);
-			// else if (tile == 'E')
-			// 	draw_sprite(d, &d->door);
+			else if (tile == 'E')
+				draw_sprite(d, &d->door);
 			d->pos.x_s++;
 		}
 		d->pos.y_s++;
@@ -59,6 +47,9 @@ void	draw_tiles(t_mlx *data, char tile)
 
 int	draw(t_mlx *data)
 {
+    char *tmp;
+
+    tmp = NULL;
 	data->pos.y = 0;
 	while (data->pos.y < data->map.length)
 	{
@@ -74,7 +65,11 @@ int	draw(t_mlx *data)
 	}
 	mlx_do_sync(data->mlx);
 	draw_player(data);
+    tmp = ft_itoa(data->moves);
 	mlx_put_image_to_window(data->mlx, data->win, data->ground.img, 0, 0);
+    mlx_string_put(data->mlx, data->win, 7, 10, 0x87CEEB, "MOVES");
+    mlx_string_put(data->mlx, data->win, 40, 10, 0x87CEEB, tmp);
+    free(tmp);
 	return (0);
 }
 

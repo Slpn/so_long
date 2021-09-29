@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   draw.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: snarain <marvin@42.fr>                     +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/16 19:23:55 by snarain           #+#    #+#             */
-/*   Updated: 2021/09/16 19:27:54 by snarain          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "so_long.h"
 
 void	draw_player_sprite(t_mlx *d, t_img *tile)
@@ -42,16 +30,16 @@ void	draw_player(t_mlx *data)
 		data->pos.x_s = 0;
 		while (data->pos.x_s < BLOCK)
 		{
-			// if (data->posp.move == LEFT)
-			// 	draw_player_sprite(data, &data->luffy_move);
-			// else if (data->posp.move == RIGHT)
-			// 	draw_player_sprite(data, &data->luffy_movel);
-			// else if (data->posp.move == UP)
-			// 	draw_player_sprite(data, &data->luffy_jump);
-			// else if (data->posp.move == DOWN)
-			// 	draw_player_sprite(data, &data->luffy_jump);
-			// else if (data->posp.move == STRAIGHT)
-			draw_player_sprite(data, &data->luffy);
+			if (data->posp.move == LEFT)
+				draw_player_sprite(data, &data->luffy_move);
+			else if (data->posp.move == RIGHT)
+				draw_player_sprite(data, &data->luffy_movel);
+			else if (data->posp.move == UP)
+				draw_player_sprite(data, &data->luffy_jump);
+			else if (data->posp.move == DOWN)
+				draw_player_sprite(data, &data->luffy_jump);
+			else if (data->posp.move == STRAIGHT)
+				draw_player_sprite(data, &data->luffy);
 			data->pos.x_s++;
 		}
 		data->pos.y_s++;
